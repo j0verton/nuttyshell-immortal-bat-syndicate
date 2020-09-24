@@ -40,7 +40,11 @@ const render = () => {
 
         <div id="formModal" class="modal">
             <form id="input--form" class="modal-content">
-                <span id="modalClose">&times;</span>
+                <div id="input--header">
+                    <h3 id="input--greeting">Share an Article</h3>
+                    <span id="modalClose">&times;</span>
+                </div>
+
                 <input type="text" id="input--title" placeholder="Title of the Article"></input>
 
                 <textarea id="input--synopsis" placeholder="Please include a synopsis..." rows="5" cols="50"></textarea>

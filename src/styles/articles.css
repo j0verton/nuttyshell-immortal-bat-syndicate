@@ -1,3 +1,4 @@
+/* new article form css */
 .modal {
     display: none;
     position: fixed; 
@@ -19,7 +20,9 @@
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
-    animation-duration: 0.4s
+    animation-duration: 0.4s;
+    display: flex;
+    flex-flow: column nowrap;
   }
   
   #modalClose {
@@ -27,6 +30,7 @@
     float: right;
     font-size: 28px;
     font-weight: bold;
+    margin-top: -10px;
   }
   
   #modalClose:hover,
@@ -34,4 +38,35 @@
     color: black;
     text-decoration: none;
     cursor: pointer;
+  }
+
+  #input--header {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+  }
+
+  #input--greeting {
+      margin: 0 0 10px 0;
+  }
+
+  #input--title {
+      margin-bottom: 10px;
+  }
+
+  #input--synopsis {
+      margin-bottom: 10px;
+  }
+
+  #input--url {
+      margin-bottom: 10px;
+  }
+
+  @-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+  }
+  @keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
   }
