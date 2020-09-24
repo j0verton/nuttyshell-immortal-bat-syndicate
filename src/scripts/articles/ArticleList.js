@@ -5,9 +5,13 @@ import { ArticleHTMLConverter } from './Article.js'
 
 const eventHub = document.querySelector("body")
 const newsTarget = document.getElementById("main")
-const contentTarget = document.getElementById("news--container")
 
-const render = (artArr) => {
+const createNews = () => newsTarget.innerHTML = `<section id="news--container"></section>`
+
+const render = () => {
+    const artArr = useArticles()
+    const contentTarget = document.getElementById("news--container")
+
     contentTarget.innerHTML = artArr.map((artObj) => {
         return ArticleHTMLConverter(artObj)
     }).join("")
@@ -15,6 +19,6 @@ const render = (artArr) => {
 
 export const ArticleList = () => {
     getArticles()
-        .then(useArticles)
+        .then(createNews)
         .then(render)
 }
