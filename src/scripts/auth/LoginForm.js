@@ -15,7 +15,6 @@ eventHub.addEventListener("click", e => {
                 if (users.length > 0) {
                     const user = users[0]
                     sessionStorage.setItem("activeUser", user.id)
-                    console.log("login")
                     eventHub.dispatchEvent(new CustomEvent("userAuthenticated"))
                 }
             })
