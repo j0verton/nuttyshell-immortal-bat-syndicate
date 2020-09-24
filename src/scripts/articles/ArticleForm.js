@@ -3,7 +3,7 @@
 import { getArticles, useArticles, saveArticle } from './ArticleProvider.js'
 
 const eventHub = document.querySelector("body")
-const contentTarget = document.getElementById("article--container")
+const contentTarget = document.getElementById("news--container")
 
 eventHub.addEventListener("click", event => {
     if (event.target.id === "saveArticle") {
@@ -19,8 +19,11 @@ eventHub.addEventListener("click", event => {
                 synopsis: synopsis.value,
                 url: url.value
             }
-        }
 
+            saveArticle(newArticle)
+        } else {
+            window.alert("Please fill in all fields.")
+        }
     }
 })
 

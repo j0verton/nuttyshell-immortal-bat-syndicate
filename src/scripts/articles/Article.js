@@ -2,7 +2,7 @@
 
 export const ArticleHTMLConverter = (artObj) => {
     return `
-        <article class="article--card" id="article--${artObj.id}">
+        <article class="article--container" id="article--${artObj.id}">
             <h2 class="article--title">${artObj.title}</h2>
             <p class="article--timestamp">Posted: ${new Date(artObj.date).toLocaleDateString('en-US')}</p>
 
