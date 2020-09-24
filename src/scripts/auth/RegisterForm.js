@@ -1,11 +1,13 @@
 const contentTarget = document.querySelector(".auth--register")
-const eventHub = document.querySelector(".container")
+const eventHub = document.querySelector("body")
 
+//this listenesfor the userAuthenticated custom event and clears the registraton form
 eventHub.addEventListener("userAuthenticated", e => {
     contentTarget.innerHTML = ""
 })
 
-
+//this was provided code that adds a new user to the database,
+//then outputs a custom event 
 eventHub.addEventListener("click", e => {
     if (e.target.id === "register--button") {
         const username = document.querySelector("#register--username").value
@@ -30,7 +32,6 @@ eventHub.addEventListener("click", e => {
                         .then(response => response.json())
                         .then((newUser) => {
                             sessionStorage.setItem("activeUser", newUser.id)
-
                             eventHub.dispatchEvent(new CustomEvent("userAuthenticated"))
                         })
 
@@ -43,7 +44,7 @@ eventHub.addEventListener("click", e => {
     }
 })
 
-
+//this function creates a registerUser form
 const render = () => {
     contentTarget.innerHTML += `
         <section class="register">
@@ -54,7 +55,7 @@ const render = () => {
         </section>
     `
 }
-
+//this function exports the registerUser form to main.js
 export const RegisterForm = () => {
     render()
 }
