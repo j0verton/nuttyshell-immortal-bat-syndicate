@@ -30,7 +30,7 @@ eventHub.addEventListener("click", e => {
                         .then(response => response.json())
                         .then((newUser) => {
                             sessionStorage.setItem("activeUser", newUser.id)
-
+                            console.log("reg")
                             eventHub.dispatchEvent(new CustomEvent("userAuthenticated"))
                         })
 
