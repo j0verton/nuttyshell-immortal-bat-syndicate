@@ -11,11 +11,12 @@ const dispatchStateChangeEvent = () => {
 let articles = []
 
 export const getArticles = () => {
-    return fetch('http://localhost:8088/articles')
+    return fetch('http://localhost:8088/news')
         .then(response => response.json())
         .then(parsedArticles => {
             articles = parsedArticles
         })
+        .then(console.log(articles))
 }
 
 export const useArticles = () => {
@@ -23,7 +24,7 @@ export const useArticles = () => {
 }
 
 export const saveArticle = artObj => {
-    return fetch('http://localhost:8088/articles', {
+    return fetch('http://localhost:8088/news', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -37,7 +38,7 @@ export const saveArticle = artObj => {
 }
 
 export const deleteArticle = articleId => {
-    return fetch(`http://localhost:8088/articles/${noteId}`, {
+    return fetch(`http://localhost:8088/news/${articleId}`, {
         method: 'DELETE'
     })
         .then(getArticles)
