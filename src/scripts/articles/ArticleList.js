@@ -12,6 +12,8 @@ const render = () => {
     const artArr = useArticles()
     const contentTarget = document.getElementById("news--container")
 
+    artArr.reverse()
+
     contentTarget.innerHTML = artArr.map((artObj) => {
         return ArticleHTMLConverter(artObj)
     }).join("")
