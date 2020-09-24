@@ -14,5 +14,5 @@ LoginForm()
 //creates registerUser from
 RegisterForm()
 
-//chechs session storage for activeUser key and if present dispatches an event to clear the forms and run nutshell
+//checks session storage for activeUser key and if present dispatches an event to clear the forms and run nutshell
 checkAuth()
