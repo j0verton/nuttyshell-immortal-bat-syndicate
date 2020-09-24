@@ -10,6 +10,7 @@ const dispatchStateChangeEvent = () => {
 
 let articles = []
 
+// retrieve articles from database and push into articles array
 export const getArticles = () => {
     return fetch('http://localhost:8088/news')
         .then(response => response.json())
@@ -18,10 +19,12 @@ export const getArticles = () => {
         })
 }
 
+// copy articles array for use in other functions
 export const useArticles = () => {
     return articles.slice()
 }
 
+// adds new articles to database
 export const saveArticle = artObj => {
     return fetch('http://localhost:8088/news', {
         method: 'POST',
@@ -36,6 +39,7 @@ export const saveArticle = artObj => {
         .then(dispatchStateChangeEvent)
 }
 
+// removes article from database
 export const deleteArticle = articleId => {
     return fetch(`http://localhost:8088/news/${articleId}`, {
         method: 'DELETE'

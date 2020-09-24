@@ -6,8 +6,10 @@ import { ArticleHTMLConverter } from './Article.js'
 const eventHub = document.querySelector("body")
 const newsTarget = document.getElementById("main")
 
+// renders news container
 const createNews = () => newsTarget.innerHTML += `<section id="news--container"></section>`
 
+// renders news
 const render = () => {
     const artArr = useArticles()
     const contentTarget = document.getElementById("news--container")
@@ -19,6 +21,7 @@ const render = () => {
     }).join("")
 }
 
+// makes sure news container renders before news
 export const ArticleList = () => {
     getArticles()
         .then(createNews)
@@ -30,6 +33,7 @@ eventHub.addEventListener("articleStateChanged", () => {
     render(newArticles)
 })
 
+// delete article functionality
 eventHub.addEventListener("click", event => {
     if (event.target.id.startsWith('deleteArticle--')) {
         const [prefix, id] = event.target.id.split("--")
@@ -37,7 +41,6 @@ eventHub.addEventListener("click", event => {
         deleteArticle(id).then(() => {
             const updatedArticles = useArticles()
             render(updatedArticles)
-        }
-        )
+        })
     }
 })
