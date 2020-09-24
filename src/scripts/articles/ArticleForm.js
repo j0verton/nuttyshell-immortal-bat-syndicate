@@ -8,7 +8,7 @@ const contentTarget = document.getElementById("article--container")
 eventHub.addEventListener("click", event => {
     if (event.target.id === "saveArticle") {
 
-        const articleContent = document
+        const id = 
 
     }
 })
