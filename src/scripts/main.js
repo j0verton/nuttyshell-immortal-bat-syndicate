@@ -1,4 +1,4 @@
-import { checkAuth } from "./auth/authProviderer.js"
+import { checkAuth } from "./auth/authProvider.js"
 import { LoginForm } from "./auth/LoginForm.js"
 import { RegisterForm } from "./auth/RegisterForm.js"
 import { Nutshell } from "./Nutshell.js"
@@ -14,5 +14,5 @@ LoginForm()
 //creates registerUser from
 RegisterForm()
 
-//chechs session storage for activeUser key and if present dispatches an event to clear the forms and run nutshell
+//checks session storage for activeUser key and if present dispatches an event to clear the forms and run nutshell
 checkAuth()
