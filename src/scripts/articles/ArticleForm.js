@@ -47,7 +47,7 @@ const render = () => {
 
                 <input type="text" id="input--title" placeholder="Title of the Article"></input>
 
-                <textarea id="input--synopsis" placeholder="Please include a synopsis..." rows="5" cols="50"></textarea>
+                <textarea id="input--synopsis" placeholder="Please include a synopsis..." rows="10" cols="50"></textarea>
 
                 <input type="text" id="input--url" placeholder="Copy/Paste URL of Article Here"></input>
 

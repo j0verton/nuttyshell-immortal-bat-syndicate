@@ -1,4 +1,77 @@
+/* imports */
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+/* show form button */
+#showFormBtn {
+    font-family: 'Lato', sans-serif;
+    background-color: lightgray;
+    border: none;
+    padding: 10px;
+    margin: 25px 0 0 25px;
+}
+
+#showFormBtn:hover {
+    background-color: gray;
+    cursor: pointer;
+}
+
+/* news container */
+#news--container {
+    font-family: 'Lato', sans-serif;
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 25px;
+}
+
+.article--container {
+    display: flex;
+    flex-flow: column nowrap;
+    background-color: lightgray;
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+.article--container h2 {
+    margin: 0 0 10px 0;
+}
+
+.article--container p {
+    margin: 0 0 10px 0;
+}
+
+.article--actions {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+
+.article--actions a {
+    color: black;
+    text-decoration: none;
+    background-color: darkgray;
+    padding: 10px;
+}
+
+.article--actions a:hover {
+    background-color: gray;
+}
+
+.article--actions button {
+    font-family: 'Lato', sans-serif;
+    background-color: darkgray;
+    border: none;
+}
+
+.article--actions button:hover {
+    background-color: gray;
+    cursor: pointer;
+}
+
 /* new article form css */
+#form--container {
+    font-family: 'Lato', sans-serif;
+}
+
 .modal {
     display: none;
     position: fixed; 
@@ -56,6 +129,7 @@
 
   #input--synopsis {
       margin-bottom: 10px;
+      resize: none;
   }
 
   #input--url {
