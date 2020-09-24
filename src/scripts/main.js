@@ -1,4 +1,4 @@
-import { checkAuth } from "./auth/authProviderer.js"
+import { checkAuth } from "./auth/authProvider.js"
 import { LoginForm } from "./auth/LoginForm.js"
 import { RegisterForm } from "./auth/RegisterForm.js"
 import { Nutshell } from "./Nutshell.js"
