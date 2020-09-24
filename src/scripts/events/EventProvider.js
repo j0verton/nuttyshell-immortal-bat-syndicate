@@ -1,6 +1,10 @@
 let events = []
 
-// const eventHub = document.querySelector("body")
+const eventHub = document.querySelector("body")
+
+const dispatchStateChangeEvent = () => {
+    eventHub.dispatchEvent(new CustomEvent("eventStateChanged"))
+}
 
 export const useEvents = () => {
     const sortedByDate = events.sort(
@@ -18,17 +22,16 @@ export const getEvents = () => {
         })
 }
 
-// export const saveEvent = eventObj => {
-//     fetch("http://localhost:8088/events", {
-//         method: "POST",
-//         headers: {
-//             "Content-Type": "application/json"
-//         },
-//         body: JSON.stringify(eventObj)
-//     })
-//         .then(getEvents) 
-//         .then(dispatchStateChangeEvent) 
-// }
+export const saveEvent = eventObj => {
+    fetch("http://localhost:8088/events", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(eventObj)
+    })
+        .then(dispatchStateChangeEvent) 
+}
 
 // export const deleteEvent = eventObj => {
 //     fetch(`http://localhost:8088/events/${eventObj.id}`, {

@@ -10,6 +10,10 @@ eventHub.addEventListener("click", clickEvent => {
     }
 })
 
+eventHub.addEventListener("eventStateChanged", event => {
+    EventList();
+})
+
 export const EventList = () => {
     getEvents()
         .then(() => {

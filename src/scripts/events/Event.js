@@ -5,6 +5,7 @@ export const EventHTML = eventObj => {
             <p>${eventObj.date}</p>
             <p>${eventObj.address}</p>
             <p>${eventObj.city}, ${eventObj.state} ${eventObj.zip}</p>
+            <button type="button" id="showWeatherBtn--${eventObj.id}">Show Weather</button>
         </div>
     `
 }
