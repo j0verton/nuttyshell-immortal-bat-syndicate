@@ -2,6 +2,8 @@ import { checkAuth } from "./auth/authProvider.js"
 import { LoginForm } from "./auth/LoginForm.js"
 import { RegisterForm } from "./auth/RegisterForm.js"
 import { Nutshell } from "./Nutshell.js"
+import './tasks/Tasks.js'
+import './tasks/TasksData.js'
 
 const eventHub = document.querySelector("body")
 //listens for userAuthenticated custom event and then runs Nutshell()
@@ -18,8 +20,6 @@ LoginForm()
     4. Also, if the user authenticates, and the login form is initially shown
         ensure that the Nutshell component gets rendered
 */
-import './tasks/Tasks.js'
-import './tasks/TasksData.js'
 //creates registerUser from
 RegisterForm()
 

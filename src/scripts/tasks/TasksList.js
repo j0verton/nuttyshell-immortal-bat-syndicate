@@ -9,7 +9,7 @@ export const TasksList = () => {
         return parseInt(t.user.id) === parseInt(sessionStorage.getItem("userId")) 
     })
     const contentTarget = document.querySelector(".tasksContainer")
-    contentTarget.innerHTML = `${userTasks.map(task => { 
+    contentTarget.innerHTML += `${userTasks.map(task => { 
         return `
         
         <section class="taskCard"><div>
