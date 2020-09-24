@@ -33,15 +33,17 @@ const render = () => {
     const contentTarget = document.getElementById("form--container")
 
     contentTarget.innerHTML = `
-        <h3>Share an Article</h3>
-        
-        <input type="text" id="input--title" placeholder="Title of the Article"></input>
+        <form id="input--form">
+            <h3>Share an Article</h3>
+            
+            <input type="text" id="input--title" placeholder="Title of the Article"></input>
 
-        <textarea id="input--synopsis" placeholder="Please include a synopsis..." rows="5" cols="50"></textarea>
+            <textarea id="input--synopsis" placeholder="Please include a synopsis..." rows="5" cols="50"></textarea>
 
-        <input type="text" id="input--url" placeholder="Copy/Paste URL of Article Here"></input>
+            <input type="text" id="input--url" placeholder="Copy/Paste URL of Article Here"></input>
 
-        <button id="saveArticle">Share</button>
+            <button id="saveArticle" type="reset">Share</button>
+        </form>
     `
 }
 
