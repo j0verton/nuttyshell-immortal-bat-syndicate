@@ -16,7 +16,6 @@ export const getArticles = () => {
         .then(parsedArticles => {
             articles = parsedArticles
         })
-        .then(console.log(articles))
 }
 
 export const useArticles = () => {
