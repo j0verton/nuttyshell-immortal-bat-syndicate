@@ -1,10 +1,13 @@
 const contentTarget = document.querySelector(".auth--login")
 const eventHub = document.querySelector("body")
 
+//this listens for the userAuthenticated custom event and clears the login form
 eventHub.addEventListener("userAuthenticated", e => {
     contentTarget.innerHTML = ""
 })
 
+//this was provided code that adds a new user to the database,
+//then outputs a custom event 
 eventHub.addEventListener("click", e => {
     if (e.target.id === "login__button") {
         const username = document.querySelector("#login__username").value
@@ -20,7 +23,7 @@ eventHub.addEventListener("click", e => {
             })
     }
 })
-
+//this fuction creates a login form
 const render = () => {
     contentTarget.innerHTML += `
         <section class="login">
@@ -29,7 +32,7 @@ const render = () => {
         </section>
     `
 }
-
+//this is a function that exports the render to main.js
 export const LoginForm = () => {
     render()
 }
