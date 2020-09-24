@@ -1,5 +1,5 @@
 const contentTarget = document.querySelector(".auth--register")
-const eventHub = document.querySelector(".container")
+const eventHub = document.querySelector("body")
 
 eventHub.addEventListener("userAuthenticated", e => {
     contentTarget.innerHTML = ""
