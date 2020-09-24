@@ -22,3 +22,20 @@ export const ArticleList = () => {
         .then(createNews)
         .then(render)
 }
+
+eventHub.addEventListener("articleStateChanged", () => {
+    const newArticles = useArticles()
+    render(newArticles)
+})
+
+eventHub.addEventListener("click", event => {
+    if (event.target.id.startsWith('deleteArticle--')) {
+        const [prefix, id] = event.target.id.split("--")
+
+        deleteArticle(id).then(() => {
+            const updatedArticles = useArticles()
+            render(updatedArticles)
+        }
+        )
+    }
+})
