@@ -10,7 +10,7 @@ export const ArticleHTMLConverter = (artObj) => {
 
             <div class="article--actions">
                 <a href="${artObj.url}" target="_blank">
-                    <h3>Read More</h3>
+                    Read More
                 </a>
 
                 <button id="deleteArticle--${artObj.id}">Delete</button>

@@ -1,9 +1,11 @@
 // form presented to user to add news article
 
-import { getArticles, useArticles, saveArticle } from './ArticleProvider.js'
+import { getArticles, saveArticle } from './ArticleProvider.js'
 
 const eventHub = document.querySelector("body")
-const contentTarget = document.getElementById("news--container")
+const formTarget = document.getElementById("main")
+
+const createForm = () => formTarget.innerHTML += `<section id="form--container"></section>`
 
 eventHub.addEventListener("click", event => {
     if (event.target.id === "saveArticle") {
@@ -27,7 +29,9 @@ eventHub.addEventListener("click", event => {
     }
 })
 
-const render = (artArr) => {
+const render = () => {
+    const contentTarget = document.getElementById("form--container")
+
     contentTarget.innerHTML = `
         <h3>Share an Article</h3>
         
@@ -43,5 +47,6 @@ const render = (artArr) => {
 
 export const ArticleForm = () => {
     getArticles()
+        .then(createForm)
         .then(render)
 }

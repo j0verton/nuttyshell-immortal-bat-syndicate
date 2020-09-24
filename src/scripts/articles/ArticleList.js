@@ -6,7 +6,7 @@ import { ArticleHTMLConverter } from './Article.js'
 const eventHub = document.querySelector("body")
 const newsTarget = document.getElementById("main")
 
-const createNews = () => newsTarget.innerHTML = `<section id="news--container"></section>`
+const createNews = () => newsTarget.innerHTML += `<section id="news--container"></section>`
 
 const render = () => {
     const artArr = useArticles()
