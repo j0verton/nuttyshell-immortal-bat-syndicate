@@ -8,7 +8,18 @@ const contentTarget = document.getElementById("article--container")
 eventHub.addEventListener("click", event => {
     if (event.target.id === "saveArticle") {
 
-        const id = test
+        const title = document.getElementById("input--title")
+        const synopsis = document.getElementById("input--synopsis")
+        const url = document.getElementById("input--url")
+
+        if (title.value !== "" && synopsis.value !== "" && url.value !== "") {
+            const newArticle = {
+                title: title.value,
+                date: Date.now(),
+                synopsis: synopsis.value,
+                url: url.value
+            }
+        }
 
     }
 })
