@@ -34,14 +34,6 @@ const dispatchStateChangeEvent = () => {
 
 eventHub.addEventListener("messageSaved", e => {
     let messageDate =new Date()
-    
-    // .toLocaleString(undefined, {
-    //     day: 'numeric',
-    //     month: 'numeric',
-    //     year: 'numeric',
-    //     hour: '2-digit',
-    //     minute: '2-digit',
-    // })
 console.log(messageDate)
     let message = {
         sendingUserId: e.detail.activeUserId,

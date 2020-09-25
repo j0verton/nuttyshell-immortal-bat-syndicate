@@ -1,13 +1,13 @@
 export const Message = messageObj => {
-return 
+    if (messageObj.sendingUserId === sessionStorage.getItem("activeUser")){
+        let user = 'currentUser'
+    } else {
+        let user = messageObj.sendingUserId
+    }
+    console.log(user)
+    return 
     `   
-        <li class="${messageObj.sendingUserId}>${messageObj.message} - ${messageObj.datetoLocaleString(undefined, {
-            day: 'numeric',
-            month: 'numeric',
-            year: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit',
-        })}</li>
+        <li class="${user} message>${messageObj.message} - ${messageObj.date}</li>
     `
 
 }
