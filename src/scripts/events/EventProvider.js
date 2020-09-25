@@ -2,10 +2,12 @@ let events = []
 
 const eventHub = document.querySelector("body")
 
+//let's the eventHub know about any change to the API
 const dispatchStateChangeEvent = () => {
     eventHub.dispatchEvent(new CustomEvent("eventStateChanged"))
 }
 
+//breaks apart and sorts the events by date
 export const useEvents = () => {
     const sortedByDate = events.sort(
         (currentEvent, nextEvent) =>
@@ -14,6 +16,7 @@ export const useEvents = () => {
     return sortedByDate
 }
 
+//gets events from API
 export const getEvents = () => {
     return fetch("http://localhost:8088/events")
         .then(response => response.json())  
@@ -22,6 +25,7 @@ export const getEvents = () => {
         })
 }
 
+//saves event to API and then triggers state change event
 export const saveEvent = eventObj => {
     fetch("http://localhost:8088/events", {
         method: "POST",
@@ -33,13 +37,13 @@ export const saveEvent = eventObj => {
         .then(dispatchStateChangeEvent) 
 }
 
-// export const deleteEvent = eventObj => {
-//     fetch(`http://localhost:8088/events/${eventObj.id}`, {
-//         method: "DELETE"
-//     })
-//         .then(getEvents) 
-//         .then(dispatchStateChangeEvent) 
-// }
+//deletes event from API and then triggers state change event
+export const deleteEvent = eventId => {
+    fetch(`http://localhost:8088/events/${eventId}`, {
+        method: "DELETE"
+    })
+        .then(dispatchStateChangeEvent) 
+}
 
 // export const updateEvent = eventObj => {
 //     fetch(`http://localhost:8088/events/${eventObj.id}`, {
