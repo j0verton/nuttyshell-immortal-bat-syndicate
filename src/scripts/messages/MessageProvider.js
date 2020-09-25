@@ -19,7 +19,7 @@ export const saveMessage = message => {
 }
 
 export const getMessages = () => {
-    return fetch('http://localhost:8088/notes')
+    return fetch('http://localhost:8088/messages')
         .then(response => response.json())
         .then(parsedMessages => {
             messages = parsedMessages
@@ -33,10 +33,20 @@ const dispatchStateChangeEvent = () => {
 }
 
 eventHub.addEventListener("messageSaved", e => {
+    let messageDate =new Date()
+    
+    // .toLocaleString(undefined, {
+    //     day: 'numeric',
+    //     month: 'numeric',
+    //     year: 'numeric',
+    //     hour: '2-digit',
+    //     minute: '2-digit',
+    // })
+console.log(messageDate)
     let message = {
         sendingUserId: e.detail.activeUserId,
         message: e.detail.message,
-        date: Date.now()
+        date: messageDate
     }
     saveMessage(message)
         .then(useMessages)
