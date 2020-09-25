@@ -19,7 +19,7 @@ eventHub.addEventListener("click", (e) => {
       console.log("Save Button Clicked",e.target.value)
     if (document.getElementById("newTask").value) {
       const newTask = {
-        userId: sessionStorage.getItem("userId"),
+        userId: sessionStorage.getItem("activeUser"),
         task: document.getElementById("newTask").value,
         date: document.getElementById("taskDate").value,
         completed: false

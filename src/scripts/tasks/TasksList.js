@@ -16,7 +16,7 @@ eventHub.addEventListener("click", e => {
 
 export const TasksList = () => {
     let userTasks = useTasks().filter(t => { 
-        return parseInt(t.user.id) === parseInt(sessionStorage.getItem("userId")) 
+        return parseInt(t.user.id) === parseInt(sessionStorage.getItem("activeUser")) 
     })
     let uncompleted = userTasks.filter(t => {
         return t.completed === false
