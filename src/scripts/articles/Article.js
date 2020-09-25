@@ -13,8 +13,10 @@ export const ArticleHTMLConverter = (artObj) => {
                     Read More
                 </a>
 
-                <button id="editArticle--${artObj.id}" class="editBtn">Edit</button>
-                <button id="deleteArticle--${artObj.id}" class="trashBtn">🗑️</button>
+                <div class="formBtns">
+                    <button id="editArticle--${artObj.id}" class="editBtn">Edit</button>
+                    <button id="deleteArticle--${artObj.id}" class="trashBtn">🗑️</button>
+                </div>
             </div>
         </article>
     `

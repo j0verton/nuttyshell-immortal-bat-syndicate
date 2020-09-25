@@ -1,21 +1,6 @@
 /* imports */
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
-/* show form button */
-#showFormBtn {
-    font-family: 'Lato', sans-serif;
-    background-color: lightgray;
-    border: none;
-    padding: 10px;
-    margin-bottom: 10px;
-    width: 125px;
-}
-
-#showFormBtn:hover {
-    background-color: gray;
-    cursor: pointer;
-}
-
 /* news container */
 #newsContainer {
     font-family: 'Lato', sans-serif;
@@ -24,8 +9,33 @@
     padding: 25px;
 }
 
-#newsContainer h2 {
+#newsHeader {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center; 
+    border-bottom: 1px solid lightgray;
+    margin-bottom: 10px;
+}
+
+#newsHeader h2 {
     margin: 0;
+}
+
+/* show form button */
+#showFormBtn {
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    background-color: lightgreen;
+    border: none;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 125px;
+}
+
+#showFormBtn:hover {
+    background-color: green;
+    cursor: pointer;
 }
 
 .article--container {
@@ -53,6 +63,7 @@
 .article--actions a {
     color: black;
     text-decoration: none;
+    font-weight: bold;
     background-color: darkgray;
     padding: 10px;
 }
@@ -61,10 +72,17 @@
     background-color: gray;
 }
 
+.formBtns {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
 .editBtn {
     font-family: 'Lato', sans-serif;
+    font-weight: bold;
     background-color: darkgray;
     border: none;
+    padding: 0 10px;
 }
 
 .editBtn:hover {
@@ -77,6 +95,7 @@
     background-color: tomato;
     border: none;
     width: 39px;
+    margin-left: 10px;
 }
 
 .trashBtn:hover {

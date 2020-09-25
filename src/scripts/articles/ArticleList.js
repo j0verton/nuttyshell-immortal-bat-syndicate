@@ -20,8 +20,11 @@ const render = artArr => {
 
     contentTarget.innerHTML = `
         <section id="newsContainer">
-            <h2>News</h2>
-            <button id="showFormBtn">Share an Article</button>
+            <div id="newsHeader">
+                <h2>News</h2>
+                <button id="showFormBtn">Share an Article</button>
+            </div>
+
             ${artHTML}
         </section>
     `
