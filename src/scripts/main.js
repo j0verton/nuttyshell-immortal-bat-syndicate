@@ -11,9 +11,6 @@ import { LoginForm } from "./auth/LoginForm.js"
 import { RegisterForm } from "./auth/RegisterForm.js"
 import { Nutshell } from "./Nutshell.js"
 
-import { ArticleForm } from './articles/ArticleForm.js'
-import { ArticleList } from './articles/ArticleList.js'
-
 const eventHub = document.querySelector("body")
 
 //listens for userAuthenticated custom event and then runs Nutshell()
@@ -29,9 +26,3 @@ RegisterForm()
 
 //checks session storage for activeUser key and if present dispatches an event to clear the forms and run nutshell
 checkAuth()
-
-// creates new article form
-ArticleForm()
-
-// adds articles to DOM and enables save and delete functionality
-ArticleList()
