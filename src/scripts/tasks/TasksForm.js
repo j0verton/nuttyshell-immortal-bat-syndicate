@@ -1,30 +1,35 @@
-import { SaveTask } from "./TasksData.js";
+import { ModifyTask, SaveTask } from "./TasksData.js";
 
 const eventHub = document.querySelector("body");
 
-
 ///Changes the visibility of the new task button and form.
 eventHub.addEventListener("click", (e) => {
-    if (e.target.id === "newTaskDisplay") {
-        newTaskDisplay.style.display = "none"
-        newTask.value = ""
-        taskDate.value = ""
-        inputForm.style.display = "block"
-    }
-    else if (e.target.id === "cancelTaskBtn") {
-        newTaskDisplay.style.display = "block"
-        inputForm.style.display = "none"
-    }
-  else if (e.target.id === "saveTaskBtn") {
-      console.log("Save Button Clicked",e.target.value)
+  if (e.target.id === "newTaskDisplay") {
+    newTask.value = "";
+    taskDate.value = "";
+    newTaskDisplay.style.display = "none";
+    inputForm.style.display = "block";
+  } else if (e.target.id === "cancelTaskBtn") {
+    sessionStorage.setItem("modify", false);
+    newTaskDisplay.style.display = "block";
+    inputForm.style.display = "none";
+  } else if (e.target.id === "saveTaskBtn") {
     if (document.getElementById("newTask").value) {
       const newTask = {
-        userId: sessionStorage.getItem("activeUser"),
+        userId: parseInt(sessionStorage.getItem("activeUser")),
         task: document.getElementById("newTask").value,
         date: document.getElementById("taskDate").value,
-        completed: false
+        completed: false,
       };
-      SaveTask(newTask)
+      if (sessionStorage.getItem("modify") === "false") {
+        SaveTask(newTask);
+      } else {
+        ModifyTask(
+          document.getElementById("newTask").value,
+          document.getElementById("taskDate").value,
+          sessionStorage.getItem("modify")
+        );
+      }
     }
   }
 });
