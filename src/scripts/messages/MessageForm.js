@@ -8,7 +8,7 @@ export const NewMessageForm = () => {
             <div id="messages"></div>
             <form id="newMessageForm">
             <input id="newMessage" type="text" placeholder="Enter your message">
-            <button type="submit" id="saveMessageBtn--${activeUser}">Send</button>
+            <button type="button" id="saveMessageBtn--${activeUser}">Send</button>
             </form>
         </section>
     `
