@@ -13,7 +13,7 @@ eventHub.addEventListener("submit", submitEvent => {
             address: document.querySelector("#eventAddress").value,
             city: document.querySelector("#eventCity").value,
             state: document.querySelector("#eventStateDropdown").value,
-            zip: document.querySelector("#eventZip").value
+            zip: parseInt(document.querySelector("#eventZip").value)
         }
 
         saveEvent(newEvent)
