@@ -1,5 +1,7 @@
 // export articles in HTML format to render to DOM
 
+const eventHub = document.querySelector('body')
+
 export const ArticleHTMLConverter = (artObj) => {
     return `
         <article class="article--container" id="article--${artObj.id}">

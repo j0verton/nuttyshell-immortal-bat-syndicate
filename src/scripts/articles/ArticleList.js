@@ -77,3 +77,31 @@ eventHub.addEventListener("click", event => {
         }
     }
 })
+
+// edit button clicked
+eventHub.addEventListener("click", event => {
+    const modal = document.getElementById("formModal")
+
+    if (event.target.id.startsWith("editArticle--")) {
+        const [prefix, articleId] = event.target.id.split('--')
+
+        modal.style.display = "block"
+
+        const editBtnPressed = new CustomEvent('editArticle', {
+            detail: {
+                id: articleId
+            }
+        })
+
+        eventHub.dispatchEvent(editBtnPressed)
+
+    } else if (event.target.id === "modalClose" || event.target.id === "saveArticle") {
+        modal.style.display = "none"
+    }
+
+    window.onclick = () => {
+        if (event.target == modal) {
+            modal.style.display = "none"
+        }
+    }
+})

@@ -1,6 +1,6 @@
 // form presented to user to add news article
 
-import { saveArticle } from './ArticleProvider.js'
+import { useArticles, saveArticle } from './ArticleProvider.js'
 
 const eventHub = document.querySelector("body")
 
@@ -31,6 +31,7 @@ eventHub.addEventListener("click", event => {
 export const ArticleForm = () => {
     const contentTarget = document.getElementById("newsContainer")
 
+    // note: full url required
     contentTarget.innerHTML += `
         <section id="formModal" class="modal">
             <form id="input--form" class="modal-content">
@@ -38,6 +39,8 @@ export const ArticleForm = () => {
                     <h3 id="modalGreeting">Share an Article</h3>
                     <span id="modalClose">&times;</span>
                 </div>
+
+                <input type="hidden" name="articleId" id="articleId">
 
                 <input type="text" id="input--title" placeholder="Title of the Article"></input>
 
@@ -50,3 +53,13 @@ export const ArticleForm = () => {
         </section>
     `
 }
+
+eventHub.addEventListener('editArticle', event => {
+    const articleCollection = useArticles()
+
+    console.log(event.detail.id)
+
+    const articleToEdit = articleCollection.find(event.target.id === articleCollection.id)
+
+    console.log(articleToEdit)
+})
