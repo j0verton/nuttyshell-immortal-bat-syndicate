@@ -57,9 +57,7 @@ export const ArticleForm = () => {
 eventHub.addEventListener('editArticle', event => {
     const articleCollection = useArticles()
 
-    console.log(event.detail.id)
-
-    const articleToEdit = articleCollection.find(event.target.id === articleCollection.id)
+    const articleToEdit = articleCollection.find(article => article.id === event.detail.id)
 
     console.log(articleToEdit)
 })
