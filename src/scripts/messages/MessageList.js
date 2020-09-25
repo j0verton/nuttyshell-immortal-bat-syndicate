@@ -24,3 +24,16 @@ export const MessageList = () => {
 eventHub.addEventListener("messageStateChanged", e => {
     MessageList()
 })
+
+document.addEventListener("click", clickEvent => {
+    clickEvent.preventDefault()
+    if(clickEvent.target.classList.contains("deleteMessage")) {
+        const [prefix, messageId] = clickEvent.target.id.split("--")
+        let newEvent = new CustomEvent("messageDeleted", {
+            detail: {
+                id: messageId,        
+            }
+        })
+        eventHub.dispatchEvent(newEvent)
+    }
+})

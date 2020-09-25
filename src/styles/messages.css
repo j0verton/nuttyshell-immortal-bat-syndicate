@@ -39,10 +39,10 @@ ul {
     
 }
 
-.delete{
+.deleteMessage {
    display: none;
    background-color: lightgrey;
 }
-.currentUser:hover .delete {
+.currentUser:hover .deleteMessage {
    display: inline;  
 }

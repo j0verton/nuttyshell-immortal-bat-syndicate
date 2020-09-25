@@ -27,3 +27,4 @@ document.addEventListener("click", clickEvent => {
         eventHub.dispatchEvent(newEvent)
     }
 })
+

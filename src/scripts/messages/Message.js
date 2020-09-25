@@ -13,7 +13,7 @@ export const Message = messageObj => {
     if (messageObj.userId === sessionStorage.getItem("activeUser")){
         return ` 
         <div class="currentUserMessageContainer">  
-            <li class="currentUser message">${messageObj.message} - <small>${timeStamp}</small><button class="delete">🗑️</button></li>
+            <li class="currentUser message">${messageObj.message} - <small>${timeStamp}</small><button class="deleteMessage--${messageObj.id}">🗑️</button></li>
         </div>
             `
 
