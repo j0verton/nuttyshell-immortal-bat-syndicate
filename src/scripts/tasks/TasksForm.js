@@ -2,6 +2,8 @@ import { SaveTask } from "./TasksData.js";
 
 const eventHub = document.querySelector("body");
 
+
+///Changes the visibility of the new task button and form.
 eventHub.addEventListener("click", (e) => {
     if (e.target.id === "newTaskDisplay") {
         newTaskDisplay.style.display = "none"
@@ -22,7 +24,6 @@ eventHub.addEventListener("click", (e) => {
         date: document.getElementById("taskDate").value,
         completed: false
       };
-      console.log("Variable created",newTask)
       SaveTask(newTask)
     }
   }

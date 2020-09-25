@@ -14,7 +14,7 @@ eventHub.addEventListener("taskStateChanged", (e) => {
     TasksList();
   });
 });
-
+///Tasks Setup initializes the placement areas for the tasks.
 export const TasksSetup = () => {
   contentTarget.innerHTML += `
   <h3>Tasks</h3>
