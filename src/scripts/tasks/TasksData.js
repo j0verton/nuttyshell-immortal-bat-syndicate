@@ -14,7 +14,6 @@ export const getTasks = () => {
   return fetch("http://localhost:8088/tasks?_expand=user")
     .then((response) => response.json())
     .then((tasks) => {
-      console.log(tasks);
       taskList = tasks;
     });
 };
@@ -36,6 +35,19 @@ export const SaveTask = (task) => {
 export const DeleteTask = (id) => {
   return fetch(`http://localhost:8088/tasks/${id}`, {
     method: "DELETE",
+  })
+    .then(getTasks)
+    .then(dispatchStateChangeEvent);
+};
+export const CompleteTask = (id) => {
+  return fetch(`http://localhost:8088/tasks/${id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      completed: true
+    })
   })
     .then(getTasks)
     .then(dispatchStateChangeEvent);
