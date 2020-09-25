@@ -12,13 +12,13 @@ export const saveMessage = message => {
     headers: {
         "Content-Type": "application/json"
     },
-    body: JSON.stringify(note)
+    body: JSON.stringify(message)
 })
 .then(getMessages)
 .then(dispatchStateChangeEvent)
 }
 
-export const getMessage = () => {
+export const getMessages = () => {
     return fetch('http://localhost:8088/notes')
         .then(response => response.json())
         .then(parsedMessages => {
