@@ -1,8 +1,8 @@
 @import "./events.css";
 @import "./weather.css";
-@import './tasks.css';
-@import url('articles.css');
+@import "./tasks.css";
+@import url("articles.css");
 
 body {
-    margin: 0;
+  margin: 0;
 }

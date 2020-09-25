@@ -28,11 +28,10 @@ export const TasksSetup = () => {
 export const TasksHTML = () => {};
 
 //This gets the tasks list, then generates the information on the DOM
-export const Tasks = () => { 
-  getTasks()
-  .then((_) => {
-  TasksSetup();
-  TaskForm();
-  TasksList();
-});
-}
+export const Tasks = () => {
+  getTasks().then((_) => {
+    TasksSetup();
+    TaskForm();
+    TasksList();
+  });
+};
