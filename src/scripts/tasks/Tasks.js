@@ -1,6 +1,6 @@
 import { getTasks } from "./TasksData.js";
 import { TaskForm } from "./TasksForm.js";
-import {TasksList } from "./TasksList.js";
+import { TasksList } from "./TasksList.js";
 
 const eventHub = document.querySelector("body");
 
@@ -28,12 +28,10 @@ export const TasksSetup = () => {
 export const TasksHTML = () => {};
 
 //This gets the tasks list, then generates the information on the DOM
-export const Tasks = () => { 
-  getTasks()
-  .then((_) => {
-  TasksSetup();
-  TaskForm();
-  TasksList();
-});
-}
-
+export const Tasks = () => {
+  getTasks().then((_) => {
+    TasksSetup();
+    TaskForm();
+    TasksList();
+  });
+};

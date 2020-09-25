@@ -1,6 +1,5 @@
 import { ModifyTask, SaveTask } from "./TasksData.js";
 
-
 const eventHub = document.querySelector("body");
 
 ///Changes the visibility of the new task button and form.
@@ -11,7 +10,7 @@ eventHub.addEventListener("click", (e) => {
     newTaskDisplay.style.display = "none";
     inputForm.style.display = "block";
   } else if (e.target.id === "cancelTaskBtn") {
-      sessionStorage.setItem("modify",false)
+    sessionStorage.setItem("modify", false);
     newTaskDisplay.style.display = "block";
     inputForm.style.display = "none";
   } else if (e.target.id === "saveTaskBtn") {
@@ -25,8 +24,13 @@ eventHub.addEventListener("click", (e) => {
       };
       if (sessionStorage.getItem("modify") === "false") {
         SaveTask(newTask);
+      } else {
+        ModifyTask(
+          document.getElementById("newTask").value,
+          document.getElementById("taskDate").value,
+          sessionStorage.getItem("modify")
+        );
       }
-      else { ModifyTask(document.getElementById("newTask").value,document.getElementById("taskDate").value,sessionStorage.getItem("modify")) }
     }
   }
 });
