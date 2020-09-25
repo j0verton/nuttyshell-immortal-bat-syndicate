@@ -1,12 +1,8 @@
 // form presented to user to add news article
 
-import { getArticles, saveArticle } from './ArticleProvider.js'
+import { saveArticle } from './ArticleProvider.js'
 
 const eventHub = document.querySelector("body")
-const formTarget = document.getElementById("main")
-
-// renders form container
-const createForm = () => formTarget.innerHTML += `<section id="form--container"></section>`
 
 // share article functionality
 eventHub.addEventListener("click", event => {
@@ -32,16 +28,14 @@ eventHub.addEventListener("click", event => {
 })
 
 // renders form
-const render = () => {
-    const contentTarget = document.getElementById("form--container")
+export const ArticleForm = () => {
+    const contentTarget = document.getElementById("newsContainer")
 
-    contentTarget.innerHTML = `
-        <button id="showFormBtn">Share an Article</button>
-
-        <div id="formModal" class="modal">
+    contentTarget.innerHTML += `
+        <section id="formModal" class="modal">
             <form id="input--form" class="modal-content">
                 <div id="input--header">
-                    <h3 id="input--greeting">Share an Article</h3>
+                    <h3 id="modalGreeting">Share an Article</h3>
                     <span id="modalClose">&times;</span>
                 </div>
 
@@ -53,30 +47,6 @@ const render = () => {
 
                 <button id="saveArticle" type="reset">Share</button>
             </form>
-        </div>
+        </section>
     `
 }
-
-// makes sure form container is rendered before form
-export const ArticleForm = () => {
-    getArticles()
-        .then(createForm)
-        .then(render)
-}
-
-// display form in modal
-eventHub.addEventListener("click", event => {
-    const modal = document.getElementById("formModal")
-
-    if (event.target.id === "showFormBtn") {
-        modal.style.display = "block"
-    } else if (event.target.id === "modalClose" || event.target.id === "saveArticle") {
-        modal.style.display = "none"
-    }
-
-    window.onclick = () => {
-        if (event.target == modal) {
-            modal.style.display = "none"
-        }
-    }
-})

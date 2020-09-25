@@ -7,7 +7,8 @@
     background-color: lightgray;
     border: none;
     padding: 10px;
-    margin: 25px 0 0 25px;
+    margin-bottom: 10px;
+    width: 125px;
 }
 
 #showFormBtn:hover {
@@ -16,11 +17,15 @@
 }
 
 /* news container */
-#news--container {
+#newsContainer {
     font-family: 'Lato', sans-serif;
     display: flex;
     flex-flow: column nowrap;
     padding: 25px;
+}
+
+#newsContainer h2 {
+    margin: 0;
 }
 
 .article--container {
@@ -28,10 +33,10 @@
     flex-flow: column nowrap;
     background-color: lightgray;
     padding: 25px;
-    margin-bottom: 25px;
+    margin-bottom: 10px;
 }
 
-.article--container h2 {
+.article--container h3 {
     margin: 0 0 10px 0;
 }
 
@@ -96,6 +101,10 @@
     animation-duration: 0.4s;
     display: flex;
     flex-flow: column nowrap;
+  }
+
+  #modalGreeting {
+      margin: 0 0 10px 0;
   }
   
   #modalClose {

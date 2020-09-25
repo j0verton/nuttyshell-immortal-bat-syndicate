@@ -2,31 +2,43 @@
 
 import { getArticles, useArticles, deleteArticle } from './ArticleProvider.js'
 import { ArticleHTMLConverter } from './Article.js'
+import { ArticleForm } from './ArticleForm.js'
 
 const eventHub = document.querySelector("body")
-const newsTarget = document.getElementById("main")
 
-// renders news container
-const createNews = () => newsTarget.innerHTML += `<section id="news--container"></section>`
+const render = artArr => {
+    // renders news container
+    const newsTarget = document.getElementById('main')
+    const renderNews = () => newsTarget.innerHTML += `<section id="newsContainer"></section>`
 
-// renders news
-const render = () => {
-    const artArr = useArticles()
-    const contentTarget = document.getElementById("news--container")
+    renderNews()
 
-    artArr.reverse()
+    // renders articles
+    const contentTarget = document.getElementById("newsContainer")
+    const artHTML = artArr.map(art => ArticleHTMLConverter(art)).join("")
 
-    contentTarget.innerHTML = artArr.map((artObj) => {
-        return ArticleHTMLConverter(artObj)
-    }).join("")
+    contentTarget.innerHTML = `
+        <section id="newsContainer">
+            <h2>News</h2>
+            <button id="showFormBtn">Share an Article</button>
+            ${artHTML}
+        </section>
+    `
+
+    ArticleForm()
 }
 
-// makes sure news container renders before news
 export const ArticleList = () => {
     getArticles()
-        .then(createNews)
-        .then(render)
+        .then(() => {
+            render(useArticles())
+        })
 }
+
+eventHub.addEventListener("articleStateChanged", () => {
+    const newArticles = useArticles()
+    render(newArticles)
+})
 
 eventHub.addEventListener("articleStateChanged", () => {
     const newArticles = useArticles()
@@ -42,5 +54,22 @@ eventHub.addEventListener("click", event => {
             const updatedArticles = useArticles()
             render(updatedArticles)
         })
+    }
+})
+
+// display form in modal
+eventHub.addEventListener("click", event => {
+    const modal = document.getElementById("formModal")
+
+    if (event.target.id === "showFormBtn") {
+        modal.style.display = "block"
+    } else if (event.target.id === "modalClose" || event.target.id === "saveArticle") {
+        modal.style.display = "none"
+    }
+
+    window.onclick = () => {
+        if (event.target == modal) {
+            modal.style.display = "none"
+        }
     }
 })
