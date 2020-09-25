@@ -19,7 +19,7 @@ export const saveMessage = message => {
 }
 
 export const getMessages = () => {
-    return fetch('http://localhost:8088/messages')
+    return fetch('http://localhost:8088/messages?_expand=user')
         .then(response => response.json())
         .then(parsedMessages => {
             messages = parsedMessages
@@ -27,13 +27,20 @@ export const getMessages = () => {
         })
 }
 
+export const deleteMessage = (messageId) => {}
+    return fetch(`http://localhost:8088/tasks/${messageId}`, {
+      method: "DELETE",
+    })
+      .then(getTasks)
+      .then(dispatchStateChangeEvent);
+
 const dispatchStateChangeEvent = () => {
     const StateChangedEvent = new CustomEvent("messageStateChanged")    
     eventHub.dispatchEvent(StateChangedEvent)
 }
 
 eventHub.addEventListener("messageSaved", e => {
-    let messageDate =new Date()
+    let messageDate =new Date().toISOString()
 console.log(messageDate)
     let message = {
         sendingUserId: e.detail.activeUserId,
