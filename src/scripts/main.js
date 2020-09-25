@@ -2,8 +2,6 @@ import { checkAuth } from "./auth/authProvider.js"
 import { LoginForm } from "./auth/LoginForm.js"
 import { RegisterForm } from "./auth/RegisterForm.js"
 import { Nutshell } from "./Nutshell.js"
-import './tasks/Tasks.js'
-import './tasks/TasksData.js'
 
 const eventHub = document.querySelector("body")
 //listens for userAuthenticated custom event and then runs Nutshell()

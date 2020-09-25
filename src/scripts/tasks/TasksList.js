@@ -1,8 +1,14 @@
-import { useTasks } from "./TasksData.js"
+import { DeleteTask, useTasks } from "./TasksData.js"
 
 const eventHub = document.querySelector("body")
 
-
+eventHub.addEventListener("click", e => {
+    if (e.target.id.startsWith("dltTaskBtn")) {
+        console.log("Delete Button Clicked")
+        let [prefix,targetId] = e.target.id.split("--")
+        DeleteTask(targetId)
+    }
+})
 
 export const TasksList = () => {
     let userTasks = useTasks().filter(t => { 
@@ -15,7 +21,7 @@ export const TasksList = () => {
         <section class="taskCard"><div>
         <label for="myTasks--${task.id}">${task.task}
         </label>
-        <input type="checkbox" id="myTasks--${task.id}">
+        <input type="checkbox" id="myTasks--${task.id}"><i class="fa fa-trash-o" id="dltTaskBtn--${task.id}"></i>
         </div></section>
         `
      }).join("")}

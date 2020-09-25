@@ -16,7 +16,6 @@ eventHub.addEventListener("taskStateChanged", (e) => {
 });
 
 export const TasksSetup = () => {
-  sessionStorage.setItem("userId", 1);
   contentTarget.innerHTML += `
   <h3>Tasks</h3>
   <div class="tasksForm"></div>
@@ -29,8 +28,11 @@ export const TasksSetup = () => {
 export const TasksHTML = () => {};
 
 //This gets the tasks list, then generates the information on the DOM
-getTasks().then((_) => {
+export const Tasks = () => { 
+  getTasks()
+  .then((_) => {
   TasksSetup();
   TaskForm();
   TasksList();
 });
+}

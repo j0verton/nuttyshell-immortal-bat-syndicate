@@ -5,6 +5,8 @@ const eventHub = document.querySelector("body");
 eventHub.addEventListener("click", (e) => {
     if (e.target.id === "newTaskDisplay") {
         newTaskDisplay.style.display = "none"
+        newTask.value = ""
+        taskDate.value = ""
         inputForm.style.display = "block"
     }
     else if (e.target.id === "cancelTaskBtn") {
@@ -17,6 +19,7 @@ eventHub.addEventListener("click", (e) => {
       const newTask = {
         userId: sessionStorage.getItem("userId"),
         task: document.getElementById("newTask").value,
+        date: document.getElementById("taskDate").value,
         completed: false
       };
       console.log("Variable created",newTask)
@@ -31,6 +34,8 @@ export const TaskForm = () => {
   <button id="newTaskDisplay">New Task</button>
   <div id="inputForm" style="display:none">
     <input id="newTask" type="text" placeholder="To Do">
+    <label for="taskDate"> Complete By: </label>
+    <input type="date" id="taskDate">
     <button id="saveTaskBtn">Save Task</button><button id="cancelTaskBtn">Cancel</button> </div>
     `;
 };

@@ -1,13 +1,12 @@
-const eventHub = document.querySelector("body")
+const eventHub = document.querySelector("body");
 
 let taskList = [];
 
-
 const dispatchStateChangeEvent = () => {
-  const taskStateChangedEvent = new CustomEvent("taskStateChanged")
+  const taskStateChangedEvent = new CustomEvent("taskStateChanged");
 
-  eventHub.dispatchEvent(taskStateChangedEvent)
-}
+  eventHub.dispatchEvent(taskStateChangedEvent);
+};
 
 export const getTasks = () => {
   // fetch("http://localhost:8088/tasks?_expand=users")
@@ -15,7 +14,7 @@ export const getTasks = () => {
   return fetch("http://localhost:8088/tasks?_expand=user")
     .then((response) => response.json())
     .then((tasks) => {
-      console.log(tasks)
+      console.log(tasks);
       taskList = tasks;
     });
 };
@@ -24,12 +23,20 @@ export const useTasks = () => {
 };
 export const SaveTask = (task) => {
   return fetch("http://localhost:8088/tasks", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify(task)
-})
-.then(getTasks)
-.then(dispatchStateChangeEvent)
-}
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(task),
+  })
+    .then(getTasks)
+    .then(dispatchStateChangeEvent);
+};
+
+export const DeleteTask = (id) => {
+  return fetch(`http://localhost:8088/tasks/${id}`, {
+    method: "DELETE",
+  })
+    .then(getTasks)
+    .then(dispatchStateChangeEvent);
+};
