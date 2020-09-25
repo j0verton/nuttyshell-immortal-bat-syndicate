@@ -25,7 +25,7 @@ const render = eventArray => {
     const contentTarget = document.querySelector("#main")
     const HTMLRep = eventArray.map(event => EventHTML(event)).join("")
 
-    contentTarget.innerHTML = `
+    contentTarget.innerHTML += `
         <section id="eventContainer">
             <h2>Events</h2>
             <button type="button" id="createEventBtn">Create Event</button>
