@@ -1,8 +1,10 @@
+
 const eventHub = document.querySelector("body");
 
 let taskList = [];
 
 const dispatchStateChangeEvent = () => {
+  sessionStorage.setItem("modify",false)
   const taskStateChangedEvent = new CustomEvent("taskStateChanged");
 
   eventHub.dispatchEvent(taskStateChangedEvent);
@@ -45,6 +47,21 @@ export const CompleteTask = (id) => {
     },
     body: JSON.stringify({
       completed: true
+    })
+  })
+    .then(getTasks)
+    .then(dispatchStateChangeEvent);
+};
+export const ModifyTask = (task,date,id) => {
+  return fetch(`http://localhost:8088/tasks/${id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      completed: false,
+      task: task,
+      date: date,
     })
   })
     .then(getTasks)

@@ -2,6 +2,11 @@ import { CompleteTask, DeleteTask, useTasks } from "./TasksData.js"
 
 const eventHub = document.querySelector("body")
 
+sessionStorage.setItem("modify",false)
+
+
+
+
 eventHub.addEventListener("click", e => {
     if (e.target.id.startsWith("dltTaskBtn")) {
         let [prefix,targetId] = e.target.id.split("--")
@@ -11,6 +16,20 @@ eventHub.addEventListener("click", e => {
         let [prefix,targetId] = e.target.id.split("--")     
         CompleteTask(targetId)   
 
+    }
+    if (e.target.id.startsWith("taskModify")) {
+        let [prefix,targetId] = e.target.id.split("--")     
+        let selectedTask = useTasks().find(task => {
+            return parseInt(task.id) === parseInt(targetId)
+        })
+        console.log(selectedTask)
+        console.log(selectedTask.task)
+        console.log(selectedTask.date)
+        sessionStorage.setItem("modify",parseInt(targetId))
+        newTask.value = selectedTask.task
+        taskDate.value = selectedTask.date
+        newTaskDisplay.style.display = "none"
+        inputForm.style.display = "block"
     }
 })
 
@@ -26,9 +45,9 @@ export const TasksList = () => {
         return `
         
         <section class="taskCard"><div>
-        <label for="myTasks--${task.id}">${task.task}
+        <label for="myTasks--${task.id}">${task.task} ${task.date}
         </label>
-        <input type="checkbox" id="myTasks--${task.id}"><i class="fa fa-trash-o" id="dltTaskBtn--${task.id}"></i>
+        <input type="checkbox" id="myTasks--${task.id}"> <span id="taskModify--${task.id}" class="glyphicon glyphicon-cog"></span> <i class="fa fa-trash-o" id="dltTaskBtn--${task.id}"></i>
         </div></section>
         `
      }).join("")}

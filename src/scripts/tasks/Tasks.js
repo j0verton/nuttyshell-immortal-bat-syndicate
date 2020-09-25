@@ -1,6 +1,6 @@
 import { getTasks } from "./TasksData.js";
 import { TaskForm } from "./TasksForm.js";
-import { TasksList } from "./TasksList.js";
+import {TasksList } from "./TasksList.js";
 
 const eventHub = document.querySelector("body");
 
@@ -36,3 +36,4 @@ export const Tasks = () => {
   TasksList();
 });
 }
+
