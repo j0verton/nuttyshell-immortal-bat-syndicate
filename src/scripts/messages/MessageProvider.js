@@ -23,16 +23,16 @@ export const getMessages = () => {
         .then(response => response.json())
         .then(parsedMessages => {
             messages = parsedMessages
-            console.log(messages)
         })
 }
 
-export const deleteMessage = (messageId) => {}
+export const deleteMessage = (messageId) => {
     return fetch(`http://localhost:8088/tasks/${messageId}`, {
       method: "DELETE",
     })
       .then(getMessages)
       .then(dispatchStateChangeEvent);
+}
 
 const dispatchStateChangeEvent = () => {
     const StateChangedEvent = new CustomEvent("messageStateChanged")    
