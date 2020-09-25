@@ -1,3 +1,5 @@
+@import "./events.css";
+@import "./weather.css";
 @import "./tasks.css";
 @import url("articles.css");
 
