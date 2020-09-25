@@ -18,9 +18,6 @@ eventHub.addEventListener("click", (e) => {
     let selectedTask = useTasks().find((task) => {
       return parseInt(task.id) === parseInt(targetId);
     });
-    console.log(selectedTask);
-    console.log(selectedTask.task);
-    console.log(selectedTask.date);
     sessionStorage.setItem("modify", parseInt(targetId));
     newTask.value = selectedTask.task;
     taskDate.value = selectedTask.date;
@@ -35,11 +32,11 @@ export const TasksList = () => {
       parseInt(t.user.id) === parseInt(sessionStorage.getItem("activeUser"))
     );
   });
-  let uncompleted = userTasks.filter((t) => {
+  let incomplete = userTasks.filter((t) => {
     return t.completed === false;
   });
   const contentTarget = document.querySelector(".tasksContainer");
-  contentTarget.innerHTML += `${uncompleted
+  contentTarget.innerHTML += `${incomplete
     .map((task) => {
       return `
         

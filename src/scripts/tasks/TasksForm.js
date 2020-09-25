@@ -14,7 +14,6 @@ eventHub.addEventListener("click", (e) => {
     newTaskDisplay.style.display = "block";
     inputForm.style.display = "none";
   } else if (e.target.id === "saveTaskBtn") {
-    console.log("Save Button Clicked", e.target.value);
     if (document.getElementById("newTask").value) {
       const newTask = {
         userId: parseInt(sessionStorage.getItem("activeUser")),
