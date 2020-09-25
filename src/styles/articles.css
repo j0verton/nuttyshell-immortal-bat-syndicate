@@ -61,14 +61,26 @@
     background-color: gray;
 }
 
-.article--actions button {
+.editBtn {
     font-family: 'Lato', sans-serif;
     background-color: darkgray;
     border: none;
 }
 
-.article--actions button:hover {
+.editBtn:hover {
     background-color: gray;
+    cursor: pointer;
+}
+
+.trashBtn {
+    font-family: 'Lato', sans-serif;
+    background-color: tomato;
+    border: none;
+    width: 39px;
+}
+
+.trashBtn:hover {
+    background-color: darkred;
     cursor: pointer;
 }
 
