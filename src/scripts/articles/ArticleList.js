@@ -15,7 +15,8 @@ const render = artArr => {
 
     // renders articles
     const contentTarget = document.getElementById("newsContainer")
-    const artHTML = artArr.map(art => ArticleHTMLConverter(art)).join("")
+    const revArtArr = artArr.reverse()
+    const artHTML = revArtArr.map(art => ArticleHTMLConverter(art)).join("")
 
     contentTarget.innerHTML = `
         <section id="newsContainer">
