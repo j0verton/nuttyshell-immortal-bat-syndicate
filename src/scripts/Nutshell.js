@@ -5,8 +5,8 @@ import { ArticleList } from './articles/ArticleList.js'
 export const Nutshell = () => {
     // Render all your UI components here
 
+    //adds events to the DOM
     EventList()
-
     // adds articles to DOM and enables save and delete functionality
     ArticleList()
     //adds tasks to dom

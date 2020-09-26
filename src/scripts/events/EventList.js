@@ -29,9 +29,12 @@ eventHub.addEventListener("click", clickEvent => {
     }
 })
 
+//when edit button is clicked, set the event form and fill it with that events details
 eventHub.addEventListener("click", clickEvent => {
     if (clickEvent.target.id.startsWith("editEventBtn--")) {
         EventForm()
+        
+        //save the id in the save button while preventing button from creating a new object upon save
         const [prefix, id] = clickEvent.target.id.split("--")
         document.querySelector("#saveEventBtn").id = `saveEventBtn--${id}`
         

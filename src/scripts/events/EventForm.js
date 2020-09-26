@@ -20,12 +20,12 @@ eventHub.addEventListener("submit", submitEvent => {
     }
 })
 
+//creates an object to send to update, updating the existing object of the same id
 eventHub.addEventListener("submit", submitEvent => {
     if (submitEvent.submitter.id.startsWith("saveEventBtn--")) {
         submitEvent.preventDefault()
 
         const [prefix, id] = submitEvent.submitter.id.split("--")
-        const event = useEvents().find(event => event.id === parseInt(id))
 
         const updatedEvent = {
             id: parseInt(id),
@@ -91,6 +91,7 @@ export const EventForm = () => {
         </section>
                 
     `
-    //prevent any day before today from being selected as a date
-    document.querySelector("#eventDate").min = new Date().toISOString().split("T")[0];
+    //prevent any day before today(CST) from being selected as a date
+    document.querySelector("#eventDate").min = new Date(Date.now() - 18000000).toISOString().split("T")[0]
+    
 }
