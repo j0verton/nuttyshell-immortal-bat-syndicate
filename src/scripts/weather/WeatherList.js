@@ -47,7 +47,8 @@ const weatherDate = (eventObj, weatherArray) => {
     
     //Find forecast if it exists
     const forecastExists = weatherArray.find(weather => { 
-        dateToCompare = weather.dt_txt.split(" ")[0]
+        //get dates in CST
+        dateToCompare = new Date((weather.dt-18000)*1000).toISOString().split("T")[0]
         return eventObj.date === dateToCompare
     })
     

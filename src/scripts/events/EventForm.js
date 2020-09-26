@@ -1,4 +1,4 @@
-import { saveEvent } from "./EventProvider.js"
+import { saveEvent, useEvents, updateEvent } from "./EventProvider.js"
 
 const eventHub = document.querySelector("body")
 
@@ -17,6 +17,27 @@ eventHub.addEventListener("submit", submitEvent => {
         }
 
         saveEvent(newEvent)
+    }
+})
+
+eventHub.addEventListener("submit", submitEvent => {
+    if (submitEvent.submitter.id.startsWith("saveEventBtn--")) {
+        submitEvent.preventDefault()
+
+        const [prefix, id] = submitEvent.submitter.id.split("--")
+        const event = useEvents().find(event => event.id === parseInt(id))
+
+        const updatedEvent = {
+            id: parseInt(id),
+            name: document.querySelector("#eventName").value,
+            date: document.querySelector("#eventDate").value,
+            address: document.querySelector("#eventAddress").value,
+            city: document.querySelector("#eventCity").value,
+            state: document.querySelector("#eventStateDropdown").value,
+            zip: parseInt(document.querySelector("#eventZip").value)
+        }
+
+        updateEvent(updatedEvent)
     }
 })
 

@@ -45,14 +45,13 @@ export const deleteEvent = eventId => {
         .then(dispatchStateChangeEvent) 
 }
 
-// export const updateEvent = eventObj => {
-//     fetch(`http://localhost:8088/events/${eventObj.id}`, {
-//         method: "PUT",
-//         headers: {
-//             "Content-Type": "application/json"
-//         },
-//         body: JSON.stringify(eventObj)
-//     })
-//         .then(getEvents) 
-//         .then(dispatchStateChangeEvent) 
-// }
+export const updateEvent = eventObj => {
+    fetch(`http://localhost:8088/events/${eventObj.id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(eventObj)
+    })
+        .then(dispatchStateChangeEvent) 
+}

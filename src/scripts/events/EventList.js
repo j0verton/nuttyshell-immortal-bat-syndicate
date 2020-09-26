@@ -1,4 +1,4 @@
-import { getEvents, useEvents, deleteEvent } from "./EventProvider.js";
+import { getEvents, useEvents, deleteEvent, updateEvent } from "./EventProvider.js";
 import { EventHTML } from "./Event.js";
 import { EventForm } from "./EventForm.js";
 import "../weather/WeatherList.js"
@@ -24,8 +24,32 @@ eventHub.addEventListener("click", clickEvent => {
 //sends event for which the delete button was pressed to be deleted
 eventHub.addEventListener("click", clickEvent => {
     if(clickEvent.target.id.startsWith("deleteEventBtn--")) {
-        const [prefix, id] = event.target.id.split("--")
+        const [prefix, id] = clickEvent.target.id.split("--")
         deleteEvent(id)
+    }
+})
+
+eventHub.addEventListener("click", clickEvent => {
+    if (clickEvent.target.id.startsWith("editEventBtn--")) {
+        EventForm()
+        const [prefix, id] = clickEvent.target.id.split("--")
+        document.querySelector("#saveEventBtn").id = `saveEventBtn--${id}`
+        
+        const event = useEvents().find(event => event.id === parseInt(id))
+        const name = document.querySelector("#eventName")
+        const date = document.querySelector("#eventDate")
+        const address = document.querySelector("#eventAddress")
+        const city = document.querySelector("#eventCity")
+        const state = document.querySelector("#eventStateDropdown")
+        const zip = document.querySelector("#eventZip")
+
+        name.value = event.name
+        date.value = event.date
+        address.value = event.address
+        city.value = event.city
+        state.value = event.state
+        zip.value = event.zip
+
     }
 })
 
@@ -38,7 +62,6 @@ eventHub.addEventListener("eventStateChanged", event => {
 export const EventList = () => {
     getEvents()
         .then(() => {
-            EventContainer();
             const eventArray = useEvents();
             render(eventArray);
             findNextEvent(eventArray);
@@ -79,7 +102,7 @@ const render = eventArray => {
 }
 
 //create event container on DOM
-const EventContainer = () => {
-    const contentTarget = document.querySelector("#main");
-    contentTarget.innerHTML += `<section id="eventContainer"></section>`
-}
+// const EventContainer = () => {
+//     const contentTarget = document.querySelector("#main");
+//     contentTarget.innerHTML += `<section id="eventContainer"></section>`
+// }
