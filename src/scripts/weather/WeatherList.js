@@ -34,6 +34,7 @@ eventHub.addEventListener("click", clickEvent => {
     }
 })
 
+//renders weather HTML on DOM for current user
 export const renderCurrentWeather = () => {
     const currentUserId = parseInt(sessionStorage.getItem("activeUser"))
     fetch(`http://localhost:8088/users/${currentUserId}`)
@@ -45,6 +46,7 @@ export const renderCurrentWeather = () => {
         })
 }
 
+//returns HTML representation of weather for the current date
 const currentWeatherHTML = (weatherArray) => {
     const currentDate = new Date(Date.now()-18000000).toISOString().split("T")[0]
     const currentWeather = maxMinTemp(weatherArray[0], weatherArray, currentDate)
