@@ -1,5 +1,5 @@
 import { WeatherHTML } from "./Weather.js";
-import { getWeather, useWeather } from "./WeatherProvider.js";
+import { getWeather, useWeather, getCurrentWeather } from "./WeatherProvider.js";
 import { useEvents } from "../events/EventProvider.js";
 
 const eventHub = document.querySelector("body");
@@ -34,12 +34,18 @@ eventHub.addEventListener("click", clickEvent => {
     }
 })
 
+//tries to get location of user and display the current weather for that location
+export const WeatherForLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(renderCurrentWeather);
+    } else {
+      document.querySelector("header").innerHTML += "Can't locate user position"
+    }
+}
+
 //renders weather HTML on DOM for current user
-export const renderCurrentWeather = () => {
-    const currentUserId = parseInt(sessionStorage.getItem("activeUser"))
-    fetch(`http://localhost:8088/users/${currentUserId}`)
-        .then(response => response.json())
-        .then(user => getWeather(user))
+const renderCurrentWeather = (position) => {
+    getCurrentWeather(position)
         .then(() => {
             const contentTarget = document.querySelector("header")
             contentTarget.innerHTML += `${currentWeatherHTML(useWeather())}`
@@ -82,6 +88,7 @@ const weatherDate = (eventObj, weatherArray) => {
     
 }
 
+//finds the high and low temperature for the day
 const maxMinTemp = (weatherObj, weatherArray, date) => {
     let tempMinArray = []; 
     let tempMaxArray = [];
