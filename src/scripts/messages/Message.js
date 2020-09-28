@@ -4,12 +4,19 @@ import { findUserById } from "./MessageProvider.js"
 export async function Message (messageObj) {
     let timeStamp= ''
 
-    let messageDate = messageObj.date.split("T")[0]
-    let currentDate = new Date().toISOString().split("T")[0]
+    let messageDateArray = messageObj.date.split(" ")
+    let messageDate = messageDateArray.slice(1,4).join(" ")
+    console.log(messageDateArray)
+    let aDate = new Date()
+    let newDateArray = aDate.split(" ")
+    console.log(newDateArray)
+    // let currentDate = newDate.slice(1,4).join(" ")
+    // let messageDate = messageObj.date.split("T")[0]
+    // let currentDate = new Date().toISOString().split("T")[0]
     if (messageDate === currentDate){
-        timeStamp = messageObj.date.split("T")[1].split(".")[0]
+        timeStamp = messageDateArray[4]
     } else {
-        timeStamp = messageObj.date.split("T").join(' ').split(".")[0]
+        timeStamp = messageDateArray.slice(1,5).join(" ")
     }
     //this code determines whether or not the message was sen by the currentUser and setts the class for css
     if (messageObj.sendingUserId === parseInt(sessionStorage.getItem("activeUser"))){
