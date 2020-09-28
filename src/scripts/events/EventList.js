@@ -68,6 +68,14 @@ export const EventList = () => {
             const eventArray = useEvents();
             render(eventArray);
             findNextEvent(eventArray);
+            eventArray.forEach(event => {
+                if (event.userId === parseInt(sessionStorage.getItem("activeUser"))) {
+                    document.querySelector(`#eventDetails--${event.id}`).innerHTML += `
+                    <button type="button" id="editEventBtn--${event.id}">Edit Event</button>
+                    <button type="button" id="deleteEventBtn--${event.id}">Delete Event</button>
+                    `
+                }
+            })
         })
 }
 
@@ -103,9 +111,3 @@ const render = eventArray => {
         ${HTMLRep}
     `
 }
-
-//create event container on DOM
-// const EventContainer = () => {
-//     const contentTarget = document.querySelector("#main");
-//     contentTarget.innerHTML += `<section id="eventContainer"></section>`
-// }
