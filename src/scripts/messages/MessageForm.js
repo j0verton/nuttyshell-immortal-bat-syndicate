@@ -25,6 +25,7 @@ document.addEventListener("click", clickEvent => {
             }
         })
         eventHub.dispatchEvent(newEvent)
+        document.getElementById("newMessage").value = ""
     }
 })
 
