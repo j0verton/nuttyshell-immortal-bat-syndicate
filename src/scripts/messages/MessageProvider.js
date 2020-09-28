@@ -16,24 +16,26 @@ export const saveMessage = message => {
     },
     body: JSON.stringify(message)
 })
-.then(getMessages)
 .then(dispatchStateChangeEvent)
 }
 //pulls the messages from the server
 export const getMessages = () => {
-    return fetch('http://localhost:8088/messages?_expand=user')
+    return fetch('http://localhost:8088/messages')
         .then(response => response.json())
         .then(parsedMessages => {
             messages = parsedMessages
         })
 }
 
+export const findUserById = idNum => {
+    return fetch(`http://localhost:8088/users?id=${idNum}`)
+        .then(response => response.json())
+}
 // deletes message an calls the state change event
 export const deleteMessage = (messageId) => {
     return fetch(`http://localhost:8088/messages/${messageId}`, {
       method: "DELETE"
     })
-      .then(getMessages)
       .then(dispatchStateChangeEvent);
 }
 
@@ -47,7 +49,7 @@ const dispatchStateChangeEvent = () => {
 eventHub.addEventListener("messageSaved", e => {
     let messageDate =new Date().toISOString()
     let message = {
-        userId: e.detail.activeUserId,
+        sendingUserId: e.detail.activeUserId,
         message: e.detail.message,
         date: messageDate
     }

@@ -4,20 +4,28 @@ import { getMessages, useMessages } from "./MessageProvider.js"
 const eventHub = document.querySelector("body")
 
 //this function pulls the messages off the server, loops the function to convert the objects to html and places them on the DOM
-export const MessageList = () => {
+export async function MessageList() {
     let messageTarget = document.querySelector("#messages")
     let allMessageHTML = `<ul>`
     getMessages()
         .then(useMessages)
         .then(messageArray => {
-            messageArray.map(messageObj => {
-                let messageHTML = Message(messageObj)
-                allMessageHTML += messageHTML
+           return messageArray.map(messageObj => {
+               let messageHTML = await Message(messageObj)
+               allMessageHTML += messageHTML
+               console.log(allMessageHTML)
+            //    .then(responseHTML => {
+            //        allMessageHTML += messageHTML
+               })
             })
-            messageTarget.innerHTML = allMessageHTML
-        })
+            
+        // })
+        // .then(responseHTML=>{
+        //     messageTarget.innerHTML = responseHTML
+        }
+        // )
 
-} 
+// } 
 //an event listener to rerender the messages whne one has changed
 eventHub.addEventListener("messageStateChanged", e => {
     MessageList()

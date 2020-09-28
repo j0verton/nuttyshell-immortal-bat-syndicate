@@ -1,3 +1,4 @@
+import { findUserById } from "./MessageProvider.js"
 
 //a function to  create an html message from a message object
 export const Message = messageObj => {
@@ -11,18 +12,24 @@ export const Message = messageObj => {
         timeStamp = messageObj.date.split("T").join(' ').split(".")[0]
     }
     //this code determines whether or not the message was sen by the currentUser and setts the class for css
-    if (messageObj.userId === parseInt(sessionStorage.getItem("activeUser"))){
+    if (messageObj.sendingUserId === parseInt(sessionStorage.getItem("activeUser"))){
         return ` 
         <div class="currentUserMessageContainer">  
             <li class="currentUser message">${messageObj.message} - <small>${timeStamp}</small><button class="deleteMessage" id="deleteMessage--${messageObj.id}">🗑️</button></li>
         </div>
             `
-
     } else {
+        let user = findSendingUser(messageObj.sendingUserId)
+        console.log(user)
         return ` 
-        <div class="friendMessageContainer">  
-            <li class="user--${messageObj.userId} message">${messageObj.message} - ${messageObj.user.username} <small>${timeStamp}</small></li>
-        </div>
-            `
+            <div class="friendMessageContainer">  
+                 <li class="user--${messageObj.sendingUserId} message">${messageObj.message} - ${user[0].username} <small>${timeStamp}</small></li>
+            </div>
+        `
     }
+}
+
+async function findSendingUser(userId) {
+    const userObj = await findUserById(userId)
+    return userObj
 }
