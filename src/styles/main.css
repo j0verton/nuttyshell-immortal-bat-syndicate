@@ -1,6 +1,7 @@
+@import './tasks.css';
+@import url('messages.css');
 @import "./events.css";
 @import "./weather.css";
-@import "./tasks.css";
 @import url("articles.css");
 
 body {
