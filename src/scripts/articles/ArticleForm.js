@@ -1,6 +1,6 @@
 // form presented to user to add news article
 
-import { useArticles, saveArticle } from './ArticleProvider.js'
+import { saveArticle, editArticle } from './ArticleProvider.js'
 
 const eventHub = document.querySelector("body")
 
@@ -14,6 +14,7 @@ eventHub.addEventListener("click", event => {
 
         if (title.value !== "" && synopsis.value !== "" && url.value !== "") {
             const newArticle = {
+                userId: parseInt(sessionStorage.getItem("activeUser")),
                 title: title.value,
                 date: Date.now(),
                 synopsis: synopsis.value,
@@ -54,10 +55,22 @@ export const ArticleForm = () => {
     `
 }
 
-eventHub.addEventListener('editArticle', event => {
-    const articleCollection = useArticles()
 
-    const articleToEdit = articleCollection.find(article => event.detail.id === article.id)
+// creates edited article object to send to database and update
+eventHub.addEventListener("click", event => {
+    if (event.target.id.startsWith("editArticle--")) {
+        event.preventDefault()
 
-    console.log(articleToEdit)
+        const [prefix, id] = event.target.id.split("--")
+
+        const editedArticle = {
+            userId: parseInt(sessionStorage.getItem("activeUser")),
+            title: document.getElementById('input--title').value,
+            synopsis: document.getElementById('input--synopsis').value,
+            url: document.getElementById('input--url').value,
+            id: parseInt(id)
+        }
+
+        editArticle(editedArticle)
+    }
 })

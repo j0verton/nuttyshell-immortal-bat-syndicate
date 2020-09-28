@@ -78,17 +78,18 @@ eventHub.addEventListener("click", event => {
     const modal = document.getElementById("formModal")
 
     if (event.target.id.startsWith("editArticle--")) {
-        const [prefix, articleId] = event.target.id.split('--')
+        const [prefix, id] = event.target.id.split('--')
+        document.querySelector('#saveArticle').id = `saveArticle--${id}`
 
         modal.style.display = "block"
 
-        const editBtnPressed = new CustomEvent('editArticle', {
-            detail: {
-                id: articleId
-            }
-        })
+        const title = document.getElementById('input--title')
+        const synopsis = document.getElementById('input--synopsis')
+        const url = document.getElementById('input--url')
 
-        eventHub.dispatchEvent(editBtnPressed)
+        title.value = event.title
+        synopsis.value = event.synopsis
+        url.value = event.url
 
     } else if (event.target.id === "modalClose" || event.target.id === "saveArticle") {
         modal.style.display = "none"
