@@ -24,6 +24,7 @@ export const getMessages = () => {
         .then(response => response.json())
         .then(parsedMessages => {
             messages = parsedMessages
+            return messages
         })
 }
 
