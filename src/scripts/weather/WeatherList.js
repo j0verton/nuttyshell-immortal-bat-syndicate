@@ -34,6 +34,7 @@ eventHub.addEventListener("click", clickEvent => {
     }
 })
 
+//tries to get location of user and display the current weather for that location
 export const WeatherForLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(renderCurrentWeather);

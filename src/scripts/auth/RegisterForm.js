@@ -50,7 +50,6 @@ const render = () => {
         <section class="register">
             <input id="register--username" type="text" placeholder="Enter your username">
             <input id="register--email" type="text" placeholder="Enter your email address">
-
             <button id="register--button">Register</button>
         </section>
     `
