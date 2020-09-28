@@ -2,10 +2,12 @@ import api from "../Settings.js";
 
 let weather;
 
-export const useWeather = () => weather;
+//creates a copy of the the array of gotten weather
+export const useWeather = () => weather.slice();
 
-export const getWeather = event => {
-    return fetch(`https://api.openweathermap.org/data/2.5/forecast?zip=${event.zip},us&units=imperial&appid=${api.weatherKey}`)
+//gets weather from the openweather API in imperial units at the given zip code and assigns it to the weather variable
+export const getWeather = object => {
+    return fetch(`https://api.openweathermap.org/data/2.5/forecast?zip=${object.zip},us&units=imperial&appid=${api.weatherKey}`)
         .then(response => response.json())
         .then(parsedWeather => {
             weather = parsedWeather.list
