@@ -4,7 +4,8 @@ export const ArticleHTMLConverter = (artObj) => {
     return `
         <article class="article--container" id="article--${artObj.id}">
             <h3 class="article--title">${artObj.title}</h3>
-            <p class="article--timestamp">Posted: ${new Date(artObj.date).toLocaleDateString('en-US')}</p>
+            <p class="article--user">Posted by: ${artObj.userId}</p>
+            <p class="article--timestamp">Date: ${new Date(artObj.date).toLocaleDateString('en-US')}</p>
 
             <p class="article--synopsis">${artObj.synopsis}</p>
 

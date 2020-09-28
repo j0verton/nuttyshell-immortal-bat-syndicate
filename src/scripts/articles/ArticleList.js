@@ -44,11 +44,6 @@ eventHub.addEventListener("articleStateChanged", () => {
     render(newArticles)
 })
 
-eventHub.addEventListener("articleStateChanged", () => {
-    const newArticles = useArticles()
-    render(newArticles)
-})
-
 // delete article functionality
 eventHub.addEventListener("click", event => {
     if (event.target.id.startsWith('deleteArticle--')) {

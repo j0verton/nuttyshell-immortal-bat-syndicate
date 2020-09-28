@@ -6,7 +6,6 @@
     font-family: 'Lato', sans-serif;
     display: flex;
     flex-flow: column nowrap;
-    padding: 25px;
 }
 
 #newsHeader {
