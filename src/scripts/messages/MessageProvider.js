@@ -28,7 +28,7 @@ export const getMessages = () => {
 
 export const deleteMessage = (messageId) => {
     return fetch(`http://localhost:8088/tasks/${messageId}`, {
-      method: "DELETE",
+      method: "DELETE"
     })
       .then(getMessages)
       .then(dispatchStateChangeEvent);
@@ -41,9 +41,8 @@ const dispatchStateChangeEvent = () => {
 
 eventHub.addEventListener("messageSaved", e => {
     let messageDate =new Date().toISOString()
-    console.log(messageDate)
     let message = {
-        sendingUserId: e.detail.activeUserId,
+        userId: e.detail.activeUserId,
         message: e.detail.message,
         date: messageDate
     }
