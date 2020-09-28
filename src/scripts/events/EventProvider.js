@@ -45,6 +45,7 @@ export const deleteEvent = eventId => {
         .then(dispatchStateChangeEvent) 
 }
 
+//updates the specific event called upon and then triggers the state change event
 export const updateEvent = eventObj => {
     fetch(`http://localhost:8088/events/${eventObj.id}`, {
         method: "PUT",

@@ -88,6 +88,7 @@ const weatherDate = (eventObj, weatherArray) => {
     
 }
 
+//finds the high and low temperature for the day
 const maxMinTemp = (weatherObj, weatherArray, date) => {
     let tempMinArray = []; 
     let tempMaxArray = [];
