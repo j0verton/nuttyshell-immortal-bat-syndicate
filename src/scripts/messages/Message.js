@@ -1,3 +1,5 @@
+
+//a function to  create an html message from a message object
 export const Message = messageObj => {
     let timeStamp= ''
 
@@ -8,9 +10,8 @@ export const Message = messageObj => {
     } else {
         timeStamp = messageObj.date.split("T").join(' ').split(".")[0]
     }
-
-
-    if (messageObj.userId === sessionStorage.getItem("activeUser")){
+    //this code determines whether or not the message was sen by the currentUser and setts the class for css
+    if (messageObj.userId === parseInt(sessionStorage.getItem("activeUser"))){
         return ` 
         <div class="currentUserMessageContainer">  
             <li class="currentUser message">${messageObj.message} - <small>${timeStamp}</small><button class="deleteMessage" id="deleteMessage--${messageObj.id}">🗑️</button></li>

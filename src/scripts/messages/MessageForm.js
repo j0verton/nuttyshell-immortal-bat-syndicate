@@ -16,11 +16,11 @@ export const NewMessageForm = () => {
 
 document.addEventListener("click", clickEvent => {
     clickEvent.preventDefault()
-    if(clickEvent.target.id.startsWith("saveMessageBtn")) {
+    if(clickEvent.target.id.startsWith("saveMessageBtn") && document.getElementById("newMessage").value) {
         const [prefix, activeUserId] = clickEvent.target.id.split("--")
         let newEvent = new CustomEvent("messageSaved", {
             detail: {
-                activeUserId: activeUserId,
+                activeUserId: parseInt(activeUserId),
                 message: document.getElementById("newMessage").value            
             }
         })
