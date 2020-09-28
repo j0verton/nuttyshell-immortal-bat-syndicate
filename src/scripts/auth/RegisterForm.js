@@ -52,7 +52,7 @@ const render = () => {
         <section class="register">
             <input id="register--username" type="text" placeholder="Enter your username">
             <input id="register--email" type="text" placeholder="Enter your email address">
-            <input type="text" id="register--zip" class="eventInput" maxlength="5" pattern="[0-9]{5}" required placeholder="Zip Code:">
+            <input type="text" id="register--zip" class="eventInput" maxlength="5" pattern="[0-9]{5}" required placeholder="Zip Code">
             <button id="register--button">Register</button>
         </section>
     `
