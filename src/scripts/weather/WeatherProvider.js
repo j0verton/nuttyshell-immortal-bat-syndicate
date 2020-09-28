@@ -14,3 +14,13 @@ export const getWeather = object => {
         })
 
 }
+
+//gets weather from openweather API in imperial units at given coordinates and assigns it to the weather variable
+export const getCurrentWeather = locationObj => {
+    return fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${locationObj.coords.latitude}&lon=${locationObj.coords.longitude}&units=imperial&cnt=8&appid=${api.weatherKey}`)
+    .then(response => response.json())
+    .then(parsedWeather => {
+        weather = parsedWeather.list
+        console.log(weather)
+    })
+}
