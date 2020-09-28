@@ -27,7 +27,7 @@ export const getMessages = () => {
             return messages
         })
 }
-
+//this function finds a user in the database by their Id
 export const findUserById = idNum => {
     return fetch(`http://localhost:8088/users?id=${idNum}`)
         .then(response => response.json())
