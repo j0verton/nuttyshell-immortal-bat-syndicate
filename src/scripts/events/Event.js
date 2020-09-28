@@ -8,6 +8,7 @@ export const EventHTML = eventObj => {
             <p>${eventObj.city}, ${eventObj.state} ${eventObj.zip}</p>
             <button type="button" id="showWeatherBtn--${eventObj.id}">Show Weather</button><br>
             <div class="weatherContainer--${eventObj.id}"></div>
+            <button type="button" id="editEventBtn--${eventObj.id}">Edit Event</button>
             <button type="button" id="deleteEventBtn--${eventObj.id}">Delete Event</button>
         </div>
     `
