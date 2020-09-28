@@ -35,3 +35,13 @@ document.addEventListener("click", clickEvent => {
         eventHub.dispatchEvent(newEvent)
     }
 })
+
+
+//this is a long polling function which makes continuous fetch calls to the server so that near real time chatting can occur
+export async function chatFeed() {
+    await getMessages();
+      MessageList()
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      await chatFeed();
+}
+  
