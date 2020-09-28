@@ -53,7 +53,7 @@ eventHub.addEventListener("messageSaved", e => {
     let message = {
         sendingUserId: e.detail.activeUserId,
         message: e.detail.message,
-        date: messageDate
+        date: messageDate.toString()
     }
     saveMessage(message)
         .then(useMessages)

@@ -3,16 +3,11 @@ import { findUserById } from "./MessageProvider.js"
 //a function to  create an html message from a message object
 export async function Message (messageObj) {
     let timeStamp= ''
-
     let messageDateArray = messageObj.date.split(" ")
     let messageDate = messageDateArray.slice(1,4).join(" ")
-    console.log(messageDateArray)
-    let aDate = new Date()
-    let newDateArray = aDate.split(" ")
-    console.log(newDateArray)
-    // let currentDate = newDate.slice(1,4).join(" ")
-    // let messageDate = messageObj.date.split("T")[0]
-    // let currentDate = new Date().toISOString().split("T")[0]
+    let rightNow = new Date()
+    let currentDateArray = rightNow.toString().split(" ")
+    let currentDate = currentDateArray.slice(1,4).join(" ")
     if (messageDate === currentDate){
         timeStamp = messageDateArray[4]
     } else {
