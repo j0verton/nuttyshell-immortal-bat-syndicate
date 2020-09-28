@@ -8,8 +8,9 @@ eventHub.addEventListener("userAuthenticated", e => {
 
 //this was provided code that adds a new user to the database,
 //then outputs a custom event 
-eventHub.addEventListener("click", e => {
-    if (e.target.id === "register--button") {
+eventHub.addEventListener("submit", e => {
+    e.preventDefault()
+    if (e.submitter.id === "register--button") {
         const username = document.querySelector("#register--username").value
         const email = document.querySelector("#register--email").value
         const zip = document.querySelector("#register--zip").value
@@ -49,12 +50,12 @@ eventHub.addEventListener("click", e => {
 //this function creates a registerUser form
 const render = () => {
     contentTarget.innerHTML += `
-        <section class="register">
+        <form class="register">
             <input id="register--username" type="text" placeholder="Enter your username">
             <input id="register--email" type="text" placeholder="Enter your email address">
             <input type="text" id="register--zip" class="eventInput" maxlength="5" pattern="[0-9]{5}" required placeholder="Zip Code">
-            <button id="register--button">Register</button>
-        </section>
+            <button type="submit" id="register--button">Register</button>
+        </form>
     `
 }
 //this function exports the registerUser form to main.js
