@@ -1,4 +1,4 @@
-import { saveEvent } from "./EventProvider.js"
+import { saveEvent, useEvents, updateEvent } from "./EventProvider.js"
 
 const eventHub = document.querySelector("body")
 
@@ -17,6 +17,27 @@ eventHub.addEventListener("submit", submitEvent => {
         }
 
         saveEvent(newEvent)
+    }
+})
+
+//creates an object to send to update, updating the existing object of the same id
+eventHub.addEventListener("submit", submitEvent => {
+    if (submitEvent.submitter.id.startsWith("saveEventBtn--")) {
+        submitEvent.preventDefault()
+
+        const [prefix, id] = submitEvent.submitter.id.split("--")
+
+        const updatedEvent = {
+            id: parseInt(id),
+            name: document.querySelector("#eventName").value,
+            date: document.querySelector("#eventDate").value,
+            address: document.querySelector("#eventAddress").value,
+            city: document.querySelector("#eventCity").value,
+            state: document.querySelector("#eventStateDropdown").value,
+            zip: parseInt(document.querySelector("#eventZip").value)
+        }
+
+        updateEvent(updatedEvent)
     }
 })
 
@@ -70,6 +91,7 @@ export const EventForm = () => {
         </section>
                 
     `
-    //prevent any day before today from being selected as a date
-    document.querySelector("#eventDate").min = new Date().toISOString().split("T")[0];
+    //prevent any day before today(CST) from being selected as a date
+    document.querySelector("#eventDate").min = new Date(Date.now() - 18000000).toISOString().split("T")[0]
+    
 }
