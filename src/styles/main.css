@@ -1,8 +1,13 @@
 @import "./events.css";
 @import "./weather.css";
 @import "./tasks.css";
+@import "./friends.css";
 @import url("articles.css");
 
 body {
   margin: 0;
+}
+.dashboard {
+    display: flex;
+    justify-content: space-between;
 }
