@@ -1,6 +1,6 @@
 const eventHub = document.querySelector("body")
 
-
+//creates the message form and display fied
 export const NewMessageForm = () => { 
     let activeUser = sessionStorage.getItem("activeUser")
     document.querySelector("aside").innerHTML += 
@@ -14,6 +14,7 @@ export const NewMessageForm = () => {
     `
 }
 
+// creates a custom event for a save message button click
 document.addEventListener("click", clickEvent => {
     clickEvent.preventDefault()
     if(clickEvent.target.id.startsWith("saveMessageBtn") && document.getElementById("newMessage").value) {
