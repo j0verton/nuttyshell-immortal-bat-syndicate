@@ -7,7 +7,7 @@ export const WeatherHTML = (weather) => {
     <ul class="weatherListing">
         <li>-- High: ${Math.round(weather.main.temp_max)} °F</li>
         <li>-- Low: ${Math.round(weather.main.temp_min)} °F</li>
-        <li>-- Chance of Precipitation: ${precipitationChance}%</li>
+        <li>-- Chance of PrecipiTaTion: ${precipitationChance}%</li>
     </ul>
     `
 }

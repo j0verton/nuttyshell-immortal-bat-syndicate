@@ -16,8 +16,9 @@ export const NewMessageForm = () => {
 
 // creates a custom event for a save message button click
 document.addEventListener("click", clickEvent => {
-    clickEvent.preventDefault()
+    
     if(clickEvent.target.id.startsWith("saveMessageBtn") && document.getElementById("newMessage").value) {
+        clickEvent.preventDefault()
         const [prefix, activeUserId] = clickEvent.target.id.split("--")
         let newEvent = new CustomEvent("messageSaved", {
             detail: {
