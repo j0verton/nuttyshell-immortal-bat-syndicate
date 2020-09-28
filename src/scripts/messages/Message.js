@@ -12,7 +12,6 @@ export async function Message (messageObj) {
         timeStamp = messageObj.date.split("T").join(' ').split(".")[0]
     }
     //this code determines whether or not the message was sen by the currentUser and setts the class for css
-    console.log(messageObj.sendingUserId, parseInt(sessionStorage.getItem("activeUser")))
     if (messageObj.sendingUserId === parseInt(sessionStorage.getItem("activeUser"))){
         return ` 
         <div class="currentUserMessageContainer">  
