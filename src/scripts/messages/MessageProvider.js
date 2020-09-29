@@ -1,4 +1,5 @@
 import { getFriends } from "../friends/FriendsData.js"
+import { replaceTs } from "../replaceTs.js"
 
 const eventHub = document.querySelector("body")
 

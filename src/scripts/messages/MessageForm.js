@@ -1,3 +1,5 @@
+import { replaceTs } from "../replaceTs.js"
+
 const eventHub = document.querySelector("body")
 
 //creates the message form and display fied
@@ -7,7 +9,7 @@ export const NewMessageForm = () => {
     `   <section id="messageContainer">
             <div id="messages"></div>
             <div id="newMessageForm">
-                <input id="newMessage" type="text" placeholder="Enter your message">
+                <input id="newMessage" type="text" placeholder="EnTer your message">
                 <button type="button" id="saveMessageBtn--${activeUser}">Send</button>
             </div>
         </section>
@@ -19,7 +21,11 @@ document.addEventListener("click", clickEvent => {
     
     if(clickEvent.target.id.startsWith("saveMessageBtn") && document.getElementById("newMessage").value) {
         clickEvent.preventDefault()
-        
+        const messageArray = [
+            document.getElementById("newMessage")
+        ]
+        replaceTs(messageArray)
+
         const [prefix, activeUserId] = clickEvent.target.id.split("--")
         let newEvent = new CustomEvent("messageSaved", {
             detail: {
@@ -28,7 +34,6 @@ document.addEventListener("click", clickEvent => {
             }
         })
         if (document.querySelector(".privateMessageField")){
-            console.log("privateMesagge")
             let targetUser = document.querySelector(".privateMessageField").id
             newEvent.detail.user = document.querySelector(".privateMessageField").id
             newEvent.detail.message = `@${targetUser}: ${document.getElementById("newMessage").value}`
@@ -45,7 +50,7 @@ document.addEventListener("click", clickEvent => {
 eventHub.addEventListener("friendChosenForMessage", e => {
     document.querySelector("#newMessageForm").innerHTML = `
     <label for="newMessage" class="privateMessageField" id="${e.detail.targetUser}">@${e.detail.targetUser}: </label>
-        <input id="newMessage" type="text" placeholder="Enter your message">
+        <input id="newMessage" type="text" placeholder="EnTer your message">
         <button type="button" id="saveMessageBtn--${sessionStorage.getItem("activeUser")}">Send</button>
     `
 })
@@ -55,7 +60,12 @@ document.addEventListener("keydown", e => {
     if (e.key === "Enter"){  
         if(document.getElementById("newMessage").value) {
             const activeUserId = parseInt(sessionStorage.getItem("activeUser"))
-            console.log(activeUserId)
+            // replaces lowercase Ts
+            const messageArray = [
+                document.getElementById("newMessage")
+            ]
+            replaceTs(messageArray)
+
             let newEvent = new CustomEvent("messageSaved", {
                 detail: {
                     activeUserId: parseInt(activeUserId),

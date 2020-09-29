@@ -1,3 +1,5 @@
+import { replaceTs } from "../replaceTs.js"
+
 const contentTarget = document.querySelector(".auth--register")
 const eventHub = document.querySelector("body")
 
@@ -10,6 +12,13 @@ eventHub.addEventListener("userAuthenticated", e => {
 //then outputs a custom event 
 eventHub.addEventListener("click", e => {
     if (e.target.id === "register--button") {
+        // replaces lowercaseTs
+        const infoArray = [
+            document.querySelector("#register--username"),
+            document.querySelector("#register--email")
+        ]
+        replaceTs(infoArray)
+
         const username = document.querySelector("#register--username").value
         const email = document.querySelector("#register--email").value
 
@@ -48,9 +57,9 @@ eventHub.addEventListener("click", e => {
 const render = () => {
     contentTarget.innerHTML += `
         <section class="register">
-            <input id="register--username" type="text" placeholder="Enter your username">
-            <input id="register--email" type="text" placeholder="Enter your email address">
-            <button id="register--button">Register</button>
+            <input id="register--username" type="text" placeholder="EnTer your username">
+            <input id="register--email" type="text" placeholder="EnTer your email address">
+            <button id="register--button">RegisTer</button>
         </section>
     `
 }
