@@ -36,6 +36,7 @@ export const ArticleList = () => {
     getArticles()
         .then(() => {
             render(useArticles())
+
         })
 }
 
