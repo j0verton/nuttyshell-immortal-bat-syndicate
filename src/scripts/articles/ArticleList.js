@@ -82,7 +82,6 @@ eventHub.addEventListener("click", event => {
         modal.style.display = "block"
 
         const [prefix, id] = event.target.id.split('--')
-        document.querySelector('#saveArticle').id = `saveArticle--${id}`
 
         const article = useArticles().find(article => article.id === parseInt(id))
         const title = document.querySelector('#input--title')

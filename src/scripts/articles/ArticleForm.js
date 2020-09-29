@@ -12,7 +12,19 @@ eventHub.addEventListener("click", event => {
         const synopsis = document.getElementById("input--synopsis")
         const url = document.getElementById("input--url")
 
-        if (title.value !== "" && synopsis.value !== "" && url.value !== "") {
+        if (id === true) {
+            const editedArticle = {
+                userId: parseInt(sessionStorage.getItem("activeUser")),
+                title: document.querySelector('#input--title').value,
+                date: Date.now(),
+                synopsis: document.querySelector('#input--synopsis').value,
+                url: document.querySelector('#input--url').value,
+                id: parseInt(id)
+            }
+
+            editArticle(editedArticle)
+
+        } else if (title.value !== "" && synopsis.value !== "" && url.value !== "") {
             const newArticle = {
                 userId: parseInt(sessionStorage.getItem("activeUser")),
                 title: title.value,
@@ -22,6 +34,7 @@ eventHub.addEventListener("click", event => {
             }
 
             saveArticle(newArticle)
+
         } else {
             window.alert("Please fill in all fields.")
         }
@@ -52,24 +65,3 @@ export const ArticleForm = () => {
         </section>
     `
 }
-
-
-// creates edited article object to send to database and update
-eventHub.addEventListener("click", event => {
-    if (event.target.id.startsWith("saveArticle--")) {
-        event.preventDefault()
-
-        const [prefix, id] = event.target.id.split("--")
-
-        const editedArticle = {
-            userId: parseInt(sessionStorage.getItem("activeUser")),
-            title: document.querySelector('#input--title').value,
-            date: Date.now(),
-            synopsis: document.querySelector('#input--synopsis').value,
-            url: document.querySelector('#input--url').value,
-            id: parseInt(id)
-        }
-
-        editArticle(editedArticle)
-    }
-})
