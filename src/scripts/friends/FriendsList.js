@@ -47,11 +47,9 @@ eventHub.addEventListener("click", (e) => {
       let friends = useFriends();
       let friend = friends.find((friend) => friend.id === parseInt(id));
       let inverse = useAllFriends().find((f) => {
-        console.log("Friend Find", f);
         return f.userId === friend.activeUserId;
       });
       DeleteFriend(id);
-      console.log("Friend var", friend, "Inversed", inverse);
       DeleteFriend(inverse.id);
     });
   }
@@ -62,7 +60,7 @@ eventHub.addEventListener("click", (e) => {
       <form autocomplete="off">
       <div id="friendInput" class="autocomplete">
       <input id="newFriend" type="text" placeholder="search a user">
-      <div><button id="addFriendBtn2">+Friend</button></div><div><button>Cancel</button></div></div></form>
+      <div><button type="button" id="addFriendBtn2">+Friend</button></div><div><button>Cancel</button></div></div></form>
        
       `;
   }
