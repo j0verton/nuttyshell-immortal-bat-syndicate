@@ -1,6 +1,6 @@
 import { EventList } from "./events/EventList.js"
 import { NewMessageForm } from "./messages/MessageForm.js"
-import { MessageList } from "./messages/MessageList.js"
+import { chatFeed, MessageList } from "./messages/MessageList.js"
 import { Tasks } from "./tasks/Tasks.js";
 import { ArticleList } from './articles/ArticleList.js'
 import { friendsSetup } from './friends/FriendsList.js'
@@ -19,6 +19,7 @@ export const Nutshell = () => {
 
     NewMessageForm()
     MessageList()
+    chatFeed()
     //adds tasks to dom
     Tasks()
     //Adds friends to the DOM

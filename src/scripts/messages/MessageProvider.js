@@ -48,11 +48,12 @@ const dispatchStateChangeEvent = () => {
 
 //listens for a saved message and turns it into an object then calls the saveMessage function
 eventHub.addEventListener("messageSaved", e => {
-    let messageDate =new Date().toISOString()
+    let messageDate =new Date()
+    console.log(messageDate)
     let message = {
         sendingUserId: e.detail.activeUserId,
         message: e.detail.message,
-        date: messageDate
+        date: messageDate.toString()
     }
     saveMessage(message)
         .then(useMessages)
@@ -62,4 +63,5 @@ eventHub.addEventListener("messageSaved", e => {
 eventHub.addEventListener("messageDeleted", e => {
     deleteMessage(e.detail.id)
 })
+
 
