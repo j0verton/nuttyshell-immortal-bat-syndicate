@@ -50,7 +50,7 @@ eventHub.addEventListener("click", clickEvent => {
         activeUserId: parseInt(sessionStorage.getItem("activeUser")),
         userId: userObj.id,
       };
-      
+
       const friendObj2 = {
         userId: parseInt(sessionStorage.getItem("activeUser")),
         activeUserId: userObj.id,
@@ -146,7 +146,7 @@ eventHub.addEventListener("click", (e) => {
         }
       }
     } else {
-      window.alert("Please insert a username!");
+      window.alert("Please inserT a username!");
     }
   }
 });
