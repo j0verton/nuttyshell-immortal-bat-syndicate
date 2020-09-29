@@ -3,8 +3,8 @@
 @import "./events.css";
 @import "./weather.css";
 @import "./tasks.css";
-@import "./friends.css";
 @import url("articles.css");
+@import "./friends.css";
 
 body {
   margin: 0;
