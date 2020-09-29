@@ -95,11 +95,27 @@ eventHub.addEventListener("click", event => {
 
     } else if (event.target.id === "modalClose" || event.target.id === "saveArticle") {
         modal.style.display = "none"
+
+        const title = document.querySelector('#input--title')
+        const synopsis = document.querySelector('#input--synopsis')
+        const url = document.querySelector('#input--url')
+
+        title.value = ""
+        synopsis.value = ""
+        url.value = ""
     }
 
     window.onclick = () => {
         if (event.target == modal) {
             modal.style.display = "none"
+
+            const title = document.querySelector('#input--title')
+            const synopsis = document.querySelector('#input--synopsis')
+            const url = document.querySelector('#input--url')
+
+            title.value = ""
+            synopsis.value = ""
+            url.value = ""
         }
     }
 })
