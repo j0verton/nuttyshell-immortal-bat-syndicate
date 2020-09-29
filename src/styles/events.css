@@ -1,3 +1,30 @@
+#eventContainer {
+    font-family: 'Lato', sans-serif;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+#eventHeader {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center; 
+    border-bottom: 1px solid lightgray;
+    margin-bottom: 10px;
+}
+
+#createEventBtn {
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #222222;
+    background-color: #9EE09E;
+    border: none;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 150px;
+}
+
 #eventContainer h2 {
     margin-top: 0;
 }

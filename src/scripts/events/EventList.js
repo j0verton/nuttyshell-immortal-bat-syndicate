@@ -114,8 +114,11 @@ const render = eventArray => {
     const HTMLRep = eventArray.map(event => EventHTML(event)).join("");
 
     contentTarget.innerHTML = `
-        <h2>EvenTs</h2>
-        <button type="button" id="createEventBtn">CreaTe EvenT</button>
+        <div id="eventHeader">
+            <h2>EvenTs</h2>
+            <button type="button" id="createEventBtn">CreaTe EvenT</button>
+        </div>
+
         ${HTMLRep}
     `
 }
