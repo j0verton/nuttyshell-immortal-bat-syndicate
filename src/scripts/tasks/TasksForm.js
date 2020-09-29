@@ -16,7 +16,7 @@ eventHub.addEventListener("click", (e) => {
     inputForm.style.display = "none";
   } else if (e.target.id === "saveTaskBtn") {
     if (document.getElementById("newTask").value) {
-    const elementArray = [document.getElementById("#newTask")]
+    const elementArray = [document.getElementById("newTask")]
         replaceTs(elementArray)
       const newTask = {
         userId: parseInt(sessionStorage.getItem("activeUser")),
