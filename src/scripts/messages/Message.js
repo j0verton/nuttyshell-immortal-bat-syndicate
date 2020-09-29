@@ -27,7 +27,7 @@ export async function Message (messageObj) {
         </div>
             `
     //current user sent private messages
-    } else if (messageObj.sendingUserId === parseInt(sessionStorage.getItem("activeUser")) && messageObj.userId !== currentUser){
+    } else if (messageObj.sendingUserId === parseInt(sessionStorage.getItem("activeUser")) && messageObj.userId && messageObj.userId !== currentUser){
         return ` 
         <div class="currentUserMessageContainer">  
             <li class="currentUser private message"><strong>${messageObj.message}</strong><br>- <small>${timeStamp}</small>

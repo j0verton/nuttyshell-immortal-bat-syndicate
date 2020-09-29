@@ -35,7 +35,7 @@ export const findUserById = idNum => {
     return fetch(`http://localhost:8088/users?id=${idNum}`)
         .then(response => response.json())
 }
-
+//this function finds a user in the database by their name
 export const findUserByName = username => {
     return fetch(`http://localhost:8088/users?username=${username}`)
         .then(response => response.json())

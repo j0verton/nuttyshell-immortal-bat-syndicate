@@ -47,6 +47,7 @@ document.addEventListener("click", clickEvent => {
     }
 })
 
+//listens for when friends are chosen from the dropdown to message
 eventHub.addEventListener("friendChosenForMessage", e => {
     document.querySelector("#newMessageForm").innerHTML = `
     <label for="newMessage" class="privateMessageField" id="${e.detail.targetUser}">@${e.detail.targetUser}: </label>
@@ -55,6 +56,7 @@ eventHub.addEventListener("friendChosenForMessage", e => {
     `
 })
 
+// lets you press enter to save a message
 document.addEventListener("keydown", e => {
     // console.log(e)
     if (e.key === "Enter"){  
@@ -72,6 +74,17 @@ document.addEventListener("keydown", e => {
                     message: document.getElementById("newMessage").value            
                 }
             })
+            if (document.querySelector(".privateMessageField")){
+                let targetUser = document.querySelector(".privateMessageField").id
+                newEvent.detail.user = document.querySelector(".privateMessageField").id
+                newEvent.detail.message = `@${targetUser}: ${document.getElementById("newMessage").value}`
+                eventHub.dispatchEvent(newEvent)
+                document.getElementById("newMessage").value = ""
+                document.querySelector(".privateMessageField").remove()
+            } else {
+                eventHub.dispatchEvent(newEvent)
+                document.getElementById("newMessage").value = ""
+            }
             eventHub.dispatchEvent(newEvent)
             document.getElementById("newMessage").value = ""
         }
