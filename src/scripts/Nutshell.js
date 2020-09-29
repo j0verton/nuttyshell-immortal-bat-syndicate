@@ -3,6 +3,7 @@ import { NewMessageForm } from "./messages/MessageForm.js"
 import { chatFeed, MessageList } from "./messages/MessageList.js"
 import { Tasks } from "./tasks/Tasks.js";
 import { ArticleList } from './articles/ArticleList.js'
+import { friendsSetup } from './friends/FriendsList.js'
 import { WeatherForLocation } from "./weather/WeatherList.js";
 import "./messages/MessageProvider.js"
 
@@ -20,5 +21,7 @@ export const Nutshell = () => {
     MessageList()
     chatFeed()
     //adds tasks to dom
-    Tasks();
+    Tasks()
+    //Adds friends to the DOM
+    friendsSetup();
 }
