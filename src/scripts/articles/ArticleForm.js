@@ -64,6 +64,7 @@ eventHub.addEventListener("click", event => {
         const editedArticle = {
             userId: parseInt(sessionStorage.getItem("activeUser")),
             title: document.querySelector('#input--title').value,
+            date: Date.now(),
             synopsis: document.querySelector('#input--synopsis').value,
             url: document.querySelector('#input--url').value,
             id: parseInt(id)

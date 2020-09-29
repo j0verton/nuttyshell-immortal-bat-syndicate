@@ -48,6 +48,7 @@ export const editArticle = artObj => {
         },
         body: JSON.stringify(artObj)
     })
+        .then(getArticles)
         .then(dispatchStateChangeEvent)
 }
 

@@ -39,7 +39,8 @@ export const ArticleList = () => {
         })
 }
 
-eventHub.addEventListener("articleStateChanged", () => {
+// listens for updates to news
+eventHub.addEventListener("articleStateChanged", e => {
     const newArticles = useArticles()
     render(newArticles)
 })
@@ -62,7 +63,7 @@ eventHub.addEventListener("click", event => {
 
     if (event.target.id === "showFormBtn") {
         modal.style.display = "block"
-    } else if (event.target.id === "modalClose" || event.target.id === "saveArticle") {
+    } else if (event.target.id === "modalClose" || event.target.id === "saveArticle" || event.target.id === "cancelArticle") {
         modal.style.display = "none"
     }
 
