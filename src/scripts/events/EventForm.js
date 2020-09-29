@@ -8,6 +8,7 @@ eventHub.addEventListener("submit", submitEvent => {
         submitEvent.preventDefault()
 
         const newEvent = {
+            userId: parseInt(sessionStorage.getItem("activeUser")),
             name: document.querySelector("#eventName").value,
             date: document.querySelector("#eventDate").value,
             address: document.querySelector("#eventAddress").value,
@@ -28,13 +29,14 @@ eventHub.addEventListener("submit", submitEvent => {
         const [prefix, id] = submitEvent.submitter.id.split("--")
 
         const updatedEvent = {
-            id: parseInt(id),
+            userId: parseInt(sessionStorage.getItem("activeUser")),
             name: document.querySelector("#eventName").value,
             date: document.querySelector("#eventDate").value,
             address: document.querySelector("#eventAddress").value,
             city: document.querySelector("#eventCity").value,
             state: document.querySelector("#eventStateDropdown").value,
-            zip: parseInt(document.querySelector("#eventZip").value)
+            zip: parseInt(document.querySelector("#eventZip").value),
+            id: parseInt(id)
         }
 
         updateEvent(updatedEvent)
