@@ -1,6 +1,6 @@
 import { EventList } from "./events/EventList.js"
 import { NewMessageForm } from "./messages/MessageForm.js"
-import { MessageList } from "./messages/MessageList.js"
+import { chatFeed, MessageList } from "./messages/MessageList.js"
 import { Tasks } from "./tasks/Tasks.js";
 import { ArticleList } from './articles/ArticleList.js'
 import { WeatherForLocation } from "./weather/WeatherList.js";
@@ -21,6 +21,7 @@ export const Nutshell = () => {
     NewMessageForm()
     MessageList()
 
+    chatFeed()
     //adds tasks to dom
     Tasks();
 }
