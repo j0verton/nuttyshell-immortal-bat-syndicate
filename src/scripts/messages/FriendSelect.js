@@ -25,9 +25,20 @@ export const FriendSelect = () => {
 }
 
 eventHub.addEventListener("keyup", event => {
-    if(event.key === "@" && document.querySelector("#newMessage").value.includes("@")){
-        FriendSelect()
+    if(event.key === "@"){
+        if (document.querySelector("#newMessage").value.includes("@")){
+            FriendSelect()
     }
+}
 })
 
-// eventHub.addEventListener()
+eventHub.addEventListener("change", e => {
+    if (e.target.id === "friendSelect") {
+        let newEvent = new CustomEvent("friendChosenForMessage", {
+            detail: {
+                targetUser: e.target.value          
+            }
+        })
+        eventHub.dispatchEvent(newEvent)
+    }
+})

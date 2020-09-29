@@ -30,6 +30,14 @@ document.addEventListener("click", clickEvent => {
         document.getElementById("newMessage").value = ""
     }
 })
+
+eventHub.addEventListener("friendChosenForMessage", e => {
+    document.querySelector("#newMessageForm").innerHTML = `
+        <input id="newMessage" type="text" placeholder="Enter your message">
+        <button type="button" id="saveMessageBtn--${sessionStorage.getItem("activeUser")}">Send</button>
+    `
+    document.getElementById("newMessage").value = `@${e.detail.targetUser}:`
+})
 //
 // document.addEventListener("keyup", e => {
 //     if (e.key === 13){  
