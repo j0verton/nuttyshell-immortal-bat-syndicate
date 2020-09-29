@@ -31,7 +31,6 @@ document.addEventListener("click", clickEvent => {
             let targetUser = document.querySelector(".privateMessageField").id
             newEvent.detail.user = document.querySelector(".privateMessageField").id
             newEvent.detail.message = `@${targetUser}: ${document.getElementById("newMessage").value}`
-            console.log(newEvent.detail)
             eventHub.dispatchEvent(newEvent)
             document.getElementById("newMessage").value = ""
             document.querySelector(".privateMessageField").remove

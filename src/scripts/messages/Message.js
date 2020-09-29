@@ -28,7 +28,6 @@ export async function Message (messageObj) {
             `
     //current user sent private messages
     } else if (messageObj.sendingUserId === parseInt(sessionStorage.getItem("activeUser")) && messageObj.userId === currentUser){
-        console.log("current private", messageObj)
         return ` 
         <div class="currentUserMessageContainer">  
             <li class="currentUser private message"><strong>${messageObj.message}</strong><br>- <small>${timeStamp}</small>
@@ -39,7 +38,6 @@ export async function Message (messageObj) {
             `
     //other user sent public messages
     } else if (messageObj.sendingUserId !== parseInt(sessionStorage.getItem("activeUser")) && !messageObj.userId){
-        console.log("other public", messageObj)
         let user = await findUserById(messageObj.sendingUserId)
         return ` 
             <div class="friendMessageContainer">  
@@ -52,7 +50,6 @@ export async function Message (messageObj) {
         return ``                 
     //other user sent private messages
     } else if (messageObj.sendingUserId !== parseInt(sessionStorage.getItem("activeUser")) && messageObj.userId === currentUser){
-        console.log("other private", messageObj)
         let user = await findUserById(messageObj.sendingUserId)
         let currentUser = await findUserById(parseInt(sessionStorage.getItem("activeUser")))
         return ` 
