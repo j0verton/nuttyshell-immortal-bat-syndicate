@@ -60,9 +60,14 @@ eventHub.addEventListener("click", (e) => {
       <form autocomplete="off">
       <div id="friendInput" class="autocomplete">
       <input id="newFriend" type="text" placeholder="search a user">
-      <div><button type="button" id="addFriendBtn2">+Friend</button></div><div><button>Cancel</button></div></div></form>
+      <div><button type="button" id="addFriendBtn2">+Friend</button></div><div><button type="button" id="friendCancel">Cancel</button></div></div></form>
        
       `;
+  }
+  if (e.target.id === "friendCancel") {
+    addFriendBtn.style.display = "block";
+    let friendTarget = document.querySelector(".addFriendDiv");
+    friendTarget.innerHTML = ``;
   }
   if (e.target.id === "addFriendBtn2") {
     // addFriendBtn.style.display = "none"
