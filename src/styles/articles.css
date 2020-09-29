@@ -1,31 +1,41 @@
 /* imports */
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
-/* show form button */
-#showFormBtn {
-    font-family: 'Lato', sans-serif;
-    background-color: lightgray;
-    border: none;
-    padding: 10px;
-    margin-bottom: 10px;
-    width: 125px;
-}
-
-#showFormBtn:hover {
-    background-color: gray;
-    cursor: pointer;
-}
-
 /* news container */
 #newsContainer {
     font-family: 'Lato', sans-serif;
     display: flex;
     flex-flow: column nowrap;
-    padding: 25px;
 }
 
-#newsContainer h2 {
+#newsHeader {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center; 
+    border-bottom: 1px solid lightgray;
+    margin-bottom: 10px;
+}
+
+#newsHeader h2 {
     margin: 0;
+}
+
+/* show form button */
+#showFormBtn {
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: lightgreen;
+    border: none;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 150px;
+}
+
+#showFormBtn:hover {
+    background-color: green;
+    cursor: pointer;
 }
 
 .article--container {
@@ -52,23 +62,46 @@
 
 .article--actions a {
     color: black;
-    text-decoration: none;
+    font-weight: bold;
     background-color: darkgray;
     padding: 10px;
 }
 
 .article--actions a:hover {
+    color: black;
     background-color: gray;
+    text-decoration: none;
 }
 
-.article--actions button {
+.formBtns {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.editBtn {
     font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
     background-color: darkgray;
     border: none;
+    padding: 0 10px;
 }
 
-.article--actions button:hover {
+.editBtn:hover {
     background-color: gray;
+    cursor: pointer;
+}
+
+.trashBtn {
+    font-family: 'Lato', sans-serif;
+    background-color: tomato;
+    border: none;
+    width: 39px;
+    margin-left: 10px;
+}
+
+.trashBtn:hover {
+    background-color: darkred;
     cursor: pointer;
 }
 
