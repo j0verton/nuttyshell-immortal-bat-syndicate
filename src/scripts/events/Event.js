@@ -1,7 +1,7 @@
 //Creates an HTML representation of an event
 export const EventHTML = eventObj => {
     return `
-        <div id="eventDetails--${eventObj.id}">
+        <div id="eventDetails--${eventObj.id}" class="eventCard">
             <h4>${eventObj.name}</h4>
             <p>${eventObj.date}</p>
             <p>${eventObj.address}</p>

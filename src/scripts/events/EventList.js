@@ -79,8 +79,10 @@ export const EventList = () => {
             eventArray.forEach(event => {
                 if (event.userId === parseInt(sessionStorage.getItem("activeUser"))) {
                     document.querySelector(`#eventDetails--${event.id}`).innerHTML += `
-                    <button type="button" id="editEventBtn--${event.id}">EdiT EvenT</button>
-                    <button type="button" id="deleteEventBtn--${event.id}">DeleTe EvenT</button>
+                    <div class="eventActions">
+                        <button type="button" id="editEventBtn--${event.id}">EdiT</button>
+                        <button type="button" id="deleteEventBtn--${event.id}">🗑️</button>
+                    </div>
                     `
                 }
             })

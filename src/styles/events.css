@@ -25,8 +25,8 @@
     width: 150px;
 }
 
-#eventContainer h2 {
-    margin-top: 0;
+#eventHeader h2 {
+    margin: 0;
 }
 
 .nextEvent {
@@ -43,4 +43,22 @@
 .nextEvent button {
     font-size: .8em;
     font-weight: normal;
+}
+
+.eventCard {
+    display: flex;
+    flex-flow: column nowrap;
+    background-color: lightgray;
+    padding: 25px;
+    margin-top: 10px;
+}
+
+.eventActions {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+}
+
+.eventActions button {
+    margin-left: 10px;
 }
