@@ -1,14 +1,20 @@
+/* import module css */
+@import './header.css';
 @import './tasks.css';
-@import url('messages.css');
+@import './messages.css';
 @import "./events.css";
 @import "./weather.css";
 @import "./tasks.css";
 @import "./friends.css";
-@import url("articles.css");
+@import "./articles.css";
+
+/* other imports */
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
 body {
   margin: 0;
 }
+
 .dashboard {
     display: flex;
     justify-content: space-between;

@@ -1,0 +1,10 @@
+header {
+    display: flex;
+    flex-flow: row nowrap;
+    background-color: #222222;
+    padding: 25px;
+}
+
+#logoContainer img {
+    height: 75px;
+}
