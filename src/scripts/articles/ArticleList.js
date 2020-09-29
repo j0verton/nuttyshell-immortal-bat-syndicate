@@ -19,9 +19,12 @@ const render = artArr => {
     const artHTML = revArtArr.map(art => ArticleHTMLConverter(art)).join("")
 
     contentTarget.innerHTML = `
-        <section id="newsContainer">
-            <h2>News</h2>
-            <button id="showFormBtn">Share an Article</button>
+        <section id="articlesContainer">
+            <div id="newsHeader">
+                <h2>News</h2>
+                <button id="showFormBtn">Share an Article</button>
+            </div>
+
             ${artHTML}
         </section>
     `
@@ -36,12 +39,8 @@ export const ArticleList = () => {
         })
 }
 
-eventHub.addEventListener("articleStateChanged", () => {
-    const newArticles = useArticles()
-    render(newArticles)
-})
-
-eventHub.addEventListener("articleStateChanged", () => {
+// listens for updates to news
+eventHub.addEventListener("articleStateChanged", e => {
     const newArticles = useArticles()
     render(newArticles)
 })
@@ -64,13 +63,60 @@ eventHub.addEventListener("click", event => {
 
     if (event.target.id === "showFormBtn") {
         modal.style.display = "block"
-    } else if (event.target.id === "modalClose" || event.target.id === "saveArticle") {
+    } else if (event.target.id === "modalClose" || event.target.id === "saveArticle" || event.target.id === "cancelArticle") {
         modal.style.display = "none"
     }
 
     window.onclick = () => {
         if (event.target == modal) {
             modal.style.display = "none"
+        }
+    }
+})
+
+// edit button clicked
+eventHub.addEventListener("click", event => {
+    const modal = document.getElementById("formModal")
+
+    if (event.target.id.startsWith("editArticle--")) {
+        modal.style.display = "block"
+
+        const [prefix, id] = event.target.id.split('--')
+
+        const article = useArticles().find(article => article.id === parseInt(id))
+        const title = document.querySelector('#input--title')
+        const synopsis = document.querySelector('#input--synopsis')
+        const url = document.querySelector('#input--url')
+        const artId = document.querySelector('#entryId')
+
+        title.value = article.title
+        synopsis.value = article.synopsis
+        url.value = article.url
+        artId.value = article.id
+
+    } else if (event.target.id === "modalClose" || event.target.id === "saveArticle") {
+        modal.style.display = "none"
+
+        const title = document.querySelector('#input--title')
+        const synopsis = document.querySelector('#input--synopsis')
+        const url = document.querySelector('#input--url')
+
+        title.value = ""
+        synopsis.value = ""
+        url.value = ""
+    }
+
+    window.onclick = () => {
+        if (event.target == modal) {
+            modal.style.display = "none"
+
+            const title = document.querySelector('#input--title')
+            const synopsis = document.querySelector('#input--synopsis')
+            const url = document.querySelector('#input--url')
+
+            title.value = ""
+            synopsis.value = ""
+            url.value = ""
         }
     }
 })

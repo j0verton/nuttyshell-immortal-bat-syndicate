@@ -1,6 +1,6 @@
 // form presented to user to add news article
 
-import { saveArticle } from './ArticleProvider.js'
+import { saveArticle, editArticle } from './ArticleProvider.js'
 
 const eventHub = document.querySelector("body")
 
@@ -11,9 +11,23 @@ eventHub.addEventListener("click", event => {
         const title = document.getElementById("input--title")
         const synopsis = document.getElementById("input--synopsis")
         const url = document.getElementById("input--url")
+        const id = document.getElementById('entryId')
 
-        if (title.value !== "" && synopsis.value !== "" && url.value !== "") {
+        if (id.value) {
+            const editedArticle = {
+                userId: parseInt(sessionStorage.getItem("activeUser")),
+                title: title.value,
+                date: Date.now(),
+                synopsis: synopsis.value,
+                url: url.value,
+                id: parseInt(id.value)
+            }
+
+            editArticle(editedArticle)
+
+        } else if (title.value !== "" && synopsis.value !== "" && url.value !== "") {
             const newArticle = {
+                userId: parseInt(sessionStorage.getItem("activeUser")),
                 title: title.value,
                 date: Date.now(),
                 synopsis: synopsis.value,
@@ -21,6 +35,7 @@ eventHub.addEventListener("click", event => {
             }
 
             saveArticle(newArticle)
+
         } else {
             window.alert("Please fill in all fields.")
         }
@@ -31,6 +46,7 @@ eventHub.addEventListener("click", event => {
 export const ArticleForm = () => {
     const contentTarget = document.getElementById("newsContainer")
 
+    // note: full url required
     contentTarget.innerHTML += `
         <section id="formModal" class="modal">
             <form id="input--form" class="modal-content">
@@ -39,6 +55,7 @@ export const ArticleForm = () => {
                     <span id="modalClose">&times;</span>
                 </div>
 
+                <input type="hidden" name="entryId" id="entryId">
                 <input type="text" id="input--title" placeholder="Title of the Article"></input>
 
                 <textarea id="input--synopsis" placeholder="Please include a synopsis..." rows="10" cols="50"></textarea>

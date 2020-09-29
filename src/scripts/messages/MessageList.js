@@ -23,7 +23,11 @@ eventHub.addEventListener("messageStateChanged", e => {
 })
 
 // a click event listener for a delete message button 
+<<<<<<< HEAD
 document.addEventListener("click", clickEvent => {
+=======
+document.addEventListener("click", clickEvent => {   
+>>>>>>> master
     if(clickEvent.target.classList.contains("deleteMessage")) {
         clickEvent.preventDefault()
         const [prefix, messageId] = clickEvent.target.id.split("--")
