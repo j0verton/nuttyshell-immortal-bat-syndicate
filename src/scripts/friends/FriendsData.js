@@ -17,11 +17,7 @@ const dispatchStateChangeEvent = () => {
 };
 
 export const getFriends = () => {
-  return fetch(
-    `http://localhost:8088/friends?_expand=user&activeUserId=${sessionStorage.getItem(
-      "activeUser"
-    )}`
-  )
+  return fetch(`http://localhost:8088/friends?_expand=user&activeUserId=${sessionStorage.getItem("activeUser")}`)
     .then((response) => response.json())
     .then((friends) => {
       friendsList = friends;
