@@ -8,6 +8,8 @@ import {
   getAllFriends,
   useAllFriends,
 } from "./FriendsData.js";
+import { getEvents, useEvents } from "../events/EventProvider.js";
+import { getArticles, useArticles } from "../articles/ArticleProvider.js";
 
 const eventHub = document.querySelector("body");
 
@@ -15,9 +17,56 @@ const contentTarget = document.querySelector("aside");
 
 export const friendsSetup = () => {
   contentTarget.innerHTML += `<aside id="friendsListSection"></aside>`;
-  getFriends().then(render);
-  getUsers();
+  getFriends()
+  .then(getUsers)
+  .then(() => {
+    const eventArray = useEvents();
+    const articleArray = useArticles();
+    const friendArray = useFriends();
+    friendArray.map(friend => {
+      eventArray.map(event => {
+        if (event.userId === friend.userId) {
+          document.querySelector(`#eventDetails--${event.id}`).classList += " friendsWith"
+        }
+      })
+      articleArray.map(article => {
+        if (article.userId === friend.userId) {
+            document.querySelector(`#article--${article.id}`).classList += " friendsWith"
+        }
+      })
+    })
+    render();
+  });
 };
+
+eventHub.addEventListener("click", clickEvent => {
+  if (clickEvent.target.id.startsWith("msgUser--")) {
+    clickEvent.preventDefault()
+    const [prefix, id] = clickEvent.target.id.split("--")
+    const userObj = useUsers().find(user => user.id === parseInt(id))
+    const addFriend = confirm(`Would you like to add ${userObj.username} as a friend?`)
+    if (addFriend) {
+      const friendObj = {
+        activeUserId: parseInt(sessionStorage.getItem("activeUser")),
+        userId: userObj.id,
+      };
+
+      const friendObj2 = {
+        userId: parseInt(sessionStorage.getItem("activeUser")),
+        activeUserId: userObj.id,
+      };
+
+      let friendExist = useFriends().find(friend => friendObj.userId === friend.userId);
+
+      if (friendExist) {
+          alert("You are already friends!");
+      } else {
+          AddFriend(friendObj);
+          AddFriend(friendObj2);
+      }
+    }
+  }
+})
 
 const render = () => {
   const contentTarget1 = document.querySelector("#friendsListSection");
@@ -75,7 +124,7 @@ eventHub.addEventListener("click", (e) => {
     if (friendTarget) {
       friendTarget = useUsers().find((user) => user.username === friendTarget);
       if (friendTarget === undefined) {
-        window.alert("This user does not exist!");
+        window.alert("This user does noT exisT!");
         document.querySelector("#newFriend").value = "";
       } else {
         const friendObj = {
@@ -97,7 +146,7 @@ eventHub.addEventListener("click", (e) => {
         }
       }
     } else {
-      window.alert("Please insert a username!");
+      window.alert("Please inserT a username!");
     }
   }
 });

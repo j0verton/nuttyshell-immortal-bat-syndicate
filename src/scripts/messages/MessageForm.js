@@ -47,7 +47,6 @@ eventHub.addEventListener("friendChosenForMessage", e => {
         <input id="newMessage" type="text" placeholder="Enter your message">
         <button type="button" id="saveMessageBtn--${sessionStorage.getItem("activeUser")}">Send</button>
     `
-    // document.getElementById("newMessage").value = `@${e.detail.targetUser}: `
 })
 
 document.addEventListener("keydown", e => {
@@ -65,6 +64,6 @@ document.addEventListener("keydown", e => {
             eventHub.dispatchEvent(newEvent)
             document.getElementById("newMessage").value = ""
         }
-}
+    }
 })
 

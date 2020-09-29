@@ -1,3 +1,4 @@
+import { replaceTs } from "../replaceTs.js";
 import { ModifyTask, SaveTask } from "./TasksData.js";
 
 const eventHub = document.querySelector("body");
@@ -15,6 +16,8 @@ eventHub.addEventListener("click", (e) => {
     inputForm.style.display = "none";
   } else if (e.target.id === "saveTaskBtn") {
     if (document.getElementById("newTask").value) {
+    const elementArray = [document.getElementById("newTask")]
+        replaceTs(elementArray)
       const newTask = {
         userId: parseInt(sessionStorage.getItem("activeUser")),
         task: document.getElementById("newTask").value,
@@ -40,7 +43,7 @@ export const TaskForm = () => {
   <button id="newTaskDisplay">New Task</button>
   <div id="inputForm" style="display:none">
     <input id="newTask" type="text" placeholder="To Do">
-    <label for="taskDate"> Complete By: </label>
+    <label for="taskDate"> CompleTe By: </label>
     <input type="date" id="taskDate">
     <button id="saveTaskBtn">Save Task</button><button id="cancelTaskBtn">Cancel</button> </div>
     `;
