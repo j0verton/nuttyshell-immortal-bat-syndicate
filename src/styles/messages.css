@@ -43,7 +43,7 @@ ul {
    display: none;
    background-color: lightgrey;
 }
-.currentUser:hover .deleteMessage {
+.currentUserMessageContainer:hover .deleteMessage {
    display: inline;  
 }
 
@@ -52,6 +52,6 @@ ul {
     background-color: lightgrey;
  }
 
- .currentUser:hover .editMessage {
+ .currentUserMessageContainer:hover .editMessage {
     display: inline;  
  }
