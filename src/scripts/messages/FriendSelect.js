@@ -24,12 +24,10 @@ export const FriendSelect = () => {
     })
 }
 
-eventHub.addEventListener("keydown", event => {
-    if(event.code === 50){
-        console.log("@")
+eventHub.addEventListener("keyup", event => {
+    if(event.key === "@" && document.querySelector("#newMessage").value.includes("@")){
         FriendSelect()
     }
+})
 
-} )
-
-document.addEventListener('keyup', logKey)
+// eventHub.addEventListener()

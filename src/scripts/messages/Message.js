@@ -28,7 +28,7 @@ export async function Message (messageObj) {
         let user = await findUserById(messageObj.sendingUserId)
         return ` 
             <div class="friendMessageContainer">  
-                <li class="user--${messageObj.sendingUserId} message"><strong>${messageObj.message}</strong><br>- ${user[0].username}<small>${timeStamp}</small>
+                <li class="user--${messageObj.sendingUserId} message"><strong>${messageObj.message}</strong><br>- ${user[0].username}<small> ${timeStamp}</small>
                 </li>
             </div>
                 `
