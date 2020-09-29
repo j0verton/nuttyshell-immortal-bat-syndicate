@@ -20,7 +20,7 @@ export const TasksSetup = () => {
   contentTarget.innerHTML += `
   <h3>Tasks</h3>
   <div class="tasksForm"></div>
-  <div class="tasksContainer"></div><p>
+  <div class="tasksContainer"></div><p></p>
   `;
   const contentTarget2 = document.querySelector(".tasksContainer");
   contentTarget2.innerHTML = "";
