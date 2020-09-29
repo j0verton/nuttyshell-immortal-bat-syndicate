@@ -3,7 +3,14 @@
     /* justify-content: flex-end */
     border: solid 2px black;
     background-color: lightgrey;
+    overflow: hidden;
 }
+
+#messages {
+    overflow-y: scroll;
+    max-height: 300px;
+}
+
 ul {
     list-style: none;
     margin-top: 30px;

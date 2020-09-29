@@ -53,6 +53,37 @@
     margin-top: 10px;
 }
 
+.eventCard h4 {
+    font-size: 1.75em;
+}
+
+.eventCard button .weatherBtn {
+    width: 250px;
+}
+
+.eventCard .weatherCard {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.eventCard .weatherCard p {
+    margin: 0 15px;
+}
+
+.eventCard .weatherCard ul {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    list-style-type: none;
+    font-size: smaller;
+    padding: 0;
+    margin: 0;
+}
+
+.eventCard .weatherCard li {
+    margin-left: 10px;
+}
+
 .eventActions {
     display: flex;
     flex-flow: row nowrap;

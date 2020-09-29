@@ -55,18 +55,20 @@
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
+    text-transform: uppercase;
+    margin-top: 10px;
 }
 
 .article--actions a {
     color: black;
     font-weight: bold;
-    background-color: darkgray;
+    background-color: rgba(0, 0, 0, .25);
     padding: 10px;
 }
 
 .article--actions a:hover {
     color: black;
-    background-color: gray;
+    background-color: rgba(0, 0, 0, .4);
     text-decoration: none;
 }
 
@@ -79,14 +81,13 @@
     font-family: 'Lato', sans-serif;
     font-weight: bold;
     text-transform: uppercase;
-    background-color: darkgray;
+    background-color: rgba(0, 0, 0, .25);
     border: none;
-    padding: 0 10px;
+    padding: 10px;
 }
 
 .editBtn:hover {
-    background-color: gray;
-    cursor: pointer;
+    background-color: rgba(0, 0, 0, .4)
 }
 
 .trashBtn {

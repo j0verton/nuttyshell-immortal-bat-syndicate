@@ -39,6 +39,22 @@ aside {
   padding: 25px;
 }
 
+#aboutIbs {
+  color: white;
+  background-color: #222222;
+  padding: 50px;
+  margin: 0;
+}
+
+#aboutIbs h2 {
+  margin: 0 0 10px 0;
+}
+
+#aboutIbs p {
+  line-height: 1.5em;
+  margin: 0;
+}
+
 footer {
   color: #222222;
   background-color: #9EE09E;
