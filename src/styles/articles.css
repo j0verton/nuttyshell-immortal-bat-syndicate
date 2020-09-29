@@ -25,11 +25,12 @@
 #showFormBtn {
     font-family: 'Lato', sans-serif;
     font-weight: bold;
+    text-transform: uppercase;
     background-color: lightgreen;
     border: none;
     padding: 10px;
     margin-bottom: 10px;
-    width: 125px;
+    width: 150px;
 }
 
 #showFormBtn:hover {
@@ -61,14 +62,15 @@
 
 .article--actions a {
     color: black;
-    text-decoration: none;
     font-weight: bold;
     background-color: darkgray;
     padding: 10px;
 }
 
 .article--actions a:hover {
+    color: black;
     background-color: gray;
+    text-decoration: none;
 }
 
 .formBtns {
@@ -79,6 +81,7 @@
 .editBtn {
     font-family: 'Lato', sans-serif;
     font-weight: bold;
+    text-transform: uppercase;
     background-color: darkgray;
     border: none;
     padding: 0 10px;

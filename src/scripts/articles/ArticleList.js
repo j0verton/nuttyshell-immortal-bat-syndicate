@@ -19,7 +19,7 @@ const render = artArr => {
     const artHTML = revArtArr.map(art => ArticleHTMLConverter(art)).join("")
 
     contentTarget.innerHTML = `
-        <section id="newsContainer">
+        <section id="articlesContainer">
             <div id="newsHeader">
                 <h2>News</h2>
                 <button id="showFormBtn">Share an Article</button>
@@ -78,18 +78,19 @@ eventHub.addEventListener("click", event => {
     const modal = document.getElementById("formModal")
 
     if (event.target.id.startsWith("editArticle--")) {
+        modal.style.display = "block"
+
         const [prefix, id] = event.target.id.split('--')
         document.querySelector('#saveArticle').id = `saveArticle--${id}`
 
-        modal.style.display = "block"
+        const article = useArticles().find(article => article.id === parseInt(id))
+        const title = document.querySelector('#input--title')
+        const synopsis = document.querySelector('#input--synopsis')
+        const url = document.querySelector('#input--url')
 
-        const title = document.getElementById('input--title')
-        const synopsis = document.getElementById('input--synopsis')
-        const url = document.getElementById('input--url')
-
-        title.value = event.title
-        synopsis.value = event.synopsis
-        url.value = event.url
+        title.value = article.title
+        synopsis.value = article.synopsis
+        url.value = article.url
 
     } else if (event.target.id === "modalClose" || event.target.id === "saveArticle") {
         modal.style.display = "none"

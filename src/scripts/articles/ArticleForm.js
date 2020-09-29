@@ -41,8 +41,6 @@ export const ArticleForm = () => {
                     <span id="modalClose">&times;</span>
                 </div>
 
-                <input type="hidden" name="articleId" id="articleId">
-
                 <input type="text" id="input--title" placeholder="Title of the Article"></input>
 
                 <textarea id="input--synopsis" placeholder="Please include a synopsis..." rows="10" cols="50"></textarea>
@@ -58,16 +56,16 @@ export const ArticleForm = () => {
 
 // creates edited article object to send to database and update
 eventHub.addEventListener("click", event => {
-    if (event.target.id.startsWith("editArticle--")) {
+    if (event.target.id.startsWith("saveArticle--")) {
         event.preventDefault()
 
         const [prefix, id] = event.target.id.split("--")
 
         const editedArticle = {
             userId: parseInt(sessionStorage.getItem("activeUser")),
-            title: document.getElementById('input--title').value,
-            synopsis: document.getElementById('input--synopsis').value,
-            url: document.getElementById('input--url').value,
+            title: document.querySelector('#input--title').value,
+            synopsis: document.querySelector('#input--synopsis').value,
+            url: document.querySelector('#input--url').value,
             id: parseInt(id)
         }
 

@@ -41,7 +41,7 @@ export const saveArticle = artObj => {
 
 // allows user to edit their articles
 export const editArticle = artObj => {
-    fetch(`http://localhost:8080/news/${artObj.id}`, {
+    fetch(`http://localhost:8088/news/${artObj.id}`, {
         method: 'PUT',
         headers: {
             "Content-Type": "application/json"

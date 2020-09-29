@@ -23,7 +23,7 @@ eventHub.addEventListener("click", clickEvent => {
 
 //sends event for which the delete button was pressed to be deleted
 eventHub.addEventListener("click", clickEvent => {
-    if(clickEvent.target.id.startsWith("deleteEventBtn--")) {
+    if (clickEvent.target.id.startsWith("deleteEventBtn--")) {
         const [prefix, id] = clickEvent.target.id.split("--")
         deleteEvent(id)
     }
@@ -33,11 +33,11 @@ eventHub.addEventListener("click", clickEvent => {
 eventHub.addEventListener("click", clickEvent => {
     if (clickEvent.target.id.startsWith("editEventBtn--")) {
         EventForm()
-        
+
         //save the id in the save button while preventing button from creating a new object upon save
         const [prefix, id] = clickEvent.target.id.split("--")
         document.querySelector("#saveEventBtn").id = `saveEventBtn--${id}`
-        
+
         const event = useEvents().find(event => event.id === parseInt(id))
         const name = document.querySelector("#eventName")
         const date = document.querySelector("#eventDate")
@@ -81,14 +81,14 @@ export const EventList = () => {
 
 //finds next event and makes its appearance stand out to user
 const findNextEvent = eventArray => {
-    
-    const todaysDate = new Date().toISOString().split("T")[0]; 
+
+    const todaysDate = new Date().toISOString().split("T")[0];
     eventArray.forEach(event => {
-        
+
         //hides all past events from user on DOM
         if (event.date < todaysDate) {
             document.querySelector(`#eventDetails--${event.id}`).hidden = true;
-        } 
+        }
 
     })
 
