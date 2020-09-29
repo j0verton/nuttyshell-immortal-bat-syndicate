@@ -17,7 +17,7 @@ export async function Message (messageObj) {
     }
     //this code determines whether or not the message was sent by the currentUser, whether it is private and sets the classes for css
     //current user sent public messages
-    if (messageObj.sendingUserId === currentUser && !messageObj.userId !== currentUser){
+    if (messageObj.sendingUserId === currentUser && !messageObj.userId){
         return ` 
         <div class="currentUserMessageContainer">  
             <li class="currentUser message"><strong>${messageObj.message}</strong><br>- <small>${timeStamp}</small>
@@ -27,7 +27,7 @@ export async function Message (messageObj) {
         </div>
             `
     //current user sent private messages
-    } else if (messageObj.sendingUserId === parseInt(sessionStorage.getItem("activeUser")) && messageObj.userId === currentUser){
+    } else if (messageObj.sendingUserId === parseInt(sessionStorage.getItem("activeUser")) && messageObj.userId !== currentUser){
         return ` 
         <div class="currentUserMessageContainer">  
             <li class="currentUser private message"><strong>${messageObj.message}</strong><br>- <small>${timeStamp}</small>

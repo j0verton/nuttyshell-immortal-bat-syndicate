@@ -28,12 +28,13 @@ document.addEventListener("click", clickEvent => {
             }
         })
         if (document.querySelector(".privateMessageField")){
+            console.log("privateMesagge")
             let targetUser = document.querySelector(".privateMessageField").id
             newEvent.detail.user = document.querySelector(".privateMessageField").id
             newEvent.detail.message = `@${targetUser}: ${document.getElementById("newMessage").value}`
             eventHub.dispatchEvent(newEvent)
             document.getElementById("newMessage").value = ""
-            document.querySelector(".privateMessageField").remove
+            document.querySelector(".privateMessageField").remove()
         } else {
             eventHub.dispatchEvent(newEvent)
             document.getElementById("newMessage").value = ""
@@ -43,7 +44,7 @@ document.addEventListener("click", clickEvent => {
 
 eventHub.addEventListener("friendChosenForMessage", e => {
     document.querySelector("#newMessageForm").innerHTML = `
-    <label for="newMessage" class="privateMessageField" id="${e.detail.targetUser}">@${e.detail.targetUser}: </>
+    <label for="newMessage" class="privateMessageField" id="${e.detail.targetUser}">@${e.detail.targetUser}: </label>
         <input id="newMessage" type="text" placeholder="Enter your message">
         <button type="button" id="saveMessageBtn--${sessionStorage.getItem("activeUser")}">Send</button>
     `
