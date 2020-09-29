@@ -12,7 +12,7 @@ let articles = []
 
 // retrieve articles from database and push into articles array
 export const getArticles = () => {
-    return fetch('http://localhost:8088/news')
+    return fetch('http://localhost:8088/news?_expand=user')
         .then(response => response.json())
         .then(parsedArticles => {
             articles = parsedArticles
