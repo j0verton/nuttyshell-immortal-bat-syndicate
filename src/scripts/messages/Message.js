@@ -17,7 +17,10 @@ export async function Message (messageObj) {
     if (messageObj.sendingUserId === parseInt(sessionStorage.getItem("activeUser"))){
         return ` 
         <div class="currentUserMessageContainer">  
-            <li class="currentUser message">${messageObj.message} - <small>${timeStamp}</small><button class="deleteMessage" id="deleteMessage--${messageObj.id}">🗑️</button></li>
+            <li class="currentUser message"><strong>${messageObj.message}</strong><br>- <small>${timeStamp}</small>
+                <button class="deleteMessage" id="deleteMessage--${messageObj.id}">🗑️</button>
+                <button class="editMessage" id="editMessage--${messageObj.id}">✏️</button>
+            </li>
         </div>
             `
 
@@ -25,7 +28,8 @@ export async function Message (messageObj) {
         let user = await findUserById(messageObj.sendingUserId)
         return ` 
             <div class="friendMessageContainer">  
-                <li class="user--${messageObj.sendingUserId} message">${messageObj.message} - ${user[0].username} <small>${timeStamp}</small></li>
+                <li class="user--${messageObj.sendingUserId} message"><strong>${messageObj.message}</strong><br>- ${user[0].username}<small>${timeStamp}</small>
+                </li>
             </div>
                 `
     }
