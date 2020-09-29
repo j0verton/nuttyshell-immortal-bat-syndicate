@@ -32,12 +32,29 @@ export const findUserById = idNum => {
     return fetch(`http://localhost:8088/users?id=${idNum}`)
         .then(response => response.json())
 }
+//this function gets a specific message by id
+export const findMessageById = idNum => {
+    return fetch(`http://localhost:8088/messages?id=${idNum}`)
+        .then(response => response.json())
+}
 // deletes message an calls the state change event
 export const deleteMessage = (messageId) => {
     return fetch(`http://localhost:8088/messages/${messageId}`, {
       method: "DELETE"
     })
       .then(dispatchStateChangeEvent);
+}
+
+//this function puts a new message obj to the database
+export const editMessage= messageObj => {
+    return fetch(`http://localhost:8088/messages/${messageObj.id}`, {
+    method: "PUT",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify(messageObj)
+})
+.then(dispatchStateChangeEvent)
 }
 
 // a state change event to reload the message field 
@@ -64,4 +81,26 @@ eventHub.addEventListener("messageDeleted", e => {
     deleteMessage(e.detail.id)
 })
 
+// listens for an edit message click and adds an input form 
+eventHub.addEventListener("editMessage", e => {
+    e.detail.targetContainer.innerHTML= `
+        <div id="editMessageForm">
+                <input id="editMessageField" type="text" value=${e.detail.messageText}>
+                <button type="button" id="editSaveMessageBtn--${e.detail.id}">Save</button>
+        </div>
+    `
+})
 
+// this is a click event to save a message that is being edited
+eventHub.addEventListener("click", clickEvent =>{
+    if (clickEvent.target.id.includes("editSaveMessageBtn")){
+        const [prefix, messageId] = clickEvent.target.id.split("--")  
+        findMessageById(messageId)
+            .then(messageObj => {
+                messageObj[0].message = document.getElementById("editMessageField").value 
+                return messageObj[0]
+            })
+            .then(editMessage)
+            .then(dispatchStateChangeEvent)
+    }
+})

@@ -46,3 +46,12 @@ ul {
 .currentUser:hover .deleteMessage {
    display: inline;  
 }
+
+.editMessage {
+    display: none;
+    background-color: lightgrey;
+ }
+
+ .currentUser:hover .editMessage {
+    display: inline;  
+ }

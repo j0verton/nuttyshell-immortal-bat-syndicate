@@ -36,12 +36,32 @@ document.addEventListener("click", clickEvent => {
     }
 })
 
+// a click event listener for an edit message button if there's not already an edit open
+document.addEventListener("click", clickEvent => {
+    if(clickEvent.target.classList.contains("editMessage") && !document.getElementById("editMessageField")) {
+        clickEvent.preventDefault()
+        const [prefix, messageId] = clickEvent.target.id.split("--")
+        let newEvent = new CustomEvent("editMessage", {
+            detail: {
+                id: messageId,
+                messageText: clickEvent.target.parentElement.textContent.split("-")[0],
+                targetContainer: clickEvent.target.parentElement.parentElement     
+            }
+        })
+        eventHub.dispatchEvent(newEvent)
+    }
+})
 
 //this is a long polling function which makes continuous fetch calls to the server so that near real time chatting can occur
 export async function chatFeed() {
-    await getMessages();
-      MessageList()
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      await chatFeed();
+    if(!document.querySelector("#editMessageForm")){
+        await getMessages();
+        MessageList()
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        await chatFeed();
+    } else {
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        await chatFeed();
+    }
 }
   
