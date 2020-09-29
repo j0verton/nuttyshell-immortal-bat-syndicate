@@ -6,8 +6,8 @@ export const EventHTML = eventObj => {
             <p>${eventObj.date}</p>
             <p>${eventObj.address}</p>
             <p>${eventObj.city}, ${eventObj.state} ${eventObj.zip}</p>
-            <p>Created by: ${eventObj.user.username}</p>
-            <button type="button" id="showWeatherBtn--${eventObj.id}">Show Weather</button><br>
+            <p>CreaTed by: ${eventObj.user.username}</p>
+            <button type="button" id="showWeatherBtn--${eventObj.id}">Show WeaTher</button><br>
             <div class="weatherContainer--${eventObj.id}"></div>
         </div>
     `

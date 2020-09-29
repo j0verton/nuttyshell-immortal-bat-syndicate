@@ -18,6 +18,14 @@ eventHub.addEventListener("click", clickEvent => {
         const eventArray = useEvents();
         render(eventArray);
         findNextEvent(eventArray);
+        eventArray.forEach(event => {
+            if (event.userId === parseInt(sessionStorage.getItem("activeUser"))) {
+                document.querySelector(`#eventDetails--${event.id}`).innerHTML += `
+                <button type="button" id="editEventBtn--${event.id}">EdiT EvenT</button>
+                <button type="button" id="deleteEventBtn--${event.id}">DeleTe EvenT</button>
+                `
+            }
+        })
     }
 })
 
@@ -34,6 +42,8 @@ eventHub.addEventListener("click", clickEvent => {
     if (clickEvent.target.id.startsWith("editEventBtn--")) {
         EventForm()
         
+        document.querySelector("#eventFormTitle").textContent = "EdiT EvenT";
+
         //save the id in the save button while preventing button from creating a new object upon save
         const [prefix, id] = clickEvent.target.id.split("--")
         document.querySelector("#saveEventBtn").id = `saveEventBtn--${id}`
@@ -71,8 +81,8 @@ export const EventList = () => {
             eventArray.forEach(event => {
                 if (event.userId === parseInt(sessionStorage.getItem("activeUser"))) {
                     document.querySelector(`#eventDetails--${event.id}`).innerHTML += `
-                    <button type="button" id="editEventBtn--${event.id}">Edit Event</button>
-                    <button type="button" id="deleteEventBtn--${event.id}">Delete Event</button>
+                    <button type="button" id="editEventBtn--${event.id}">EdiT EvenT</button>
+                    <button type="button" id="deleteEventBtn--${event.id}">DeleTe EvenT</button>
                     `
                 }
             })
@@ -106,8 +116,8 @@ const render = eventArray => {
     const HTMLRep = eventArray.map(event => EventHTML(event)).join("");
 
     contentTarget.innerHTML = `
-        <h2>Events</h2>
-        <button type="button" id="createEventBtn">Create Event</button>
+        <h2>EvenTs</h2>
+        <button type="button" id="createEventBtn">CreaTe EvenT</button>
         ${HTMLRep}
     `
 }
