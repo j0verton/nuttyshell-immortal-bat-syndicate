@@ -1,4 +1,5 @@
 import { saveEvent, useEvents, updateEvent } from "./EventProvider.js"
+import { replaceTs } from "../replaceTs.js"
 
 const eventHub = document.querySelector("body")
 
@@ -6,6 +7,14 @@ const eventHub = document.querySelector("body")
 eventHub.addEventListener("submit", submitEvent => {
     if (submitEvent.submitter.id === "saveEventBtn") {
         submitEvent.preventDefault()
+
+        const elementArray = [
+            document.getElementById('eventName'),
+            document.getElementById('eventAddress'),
+            document.getElementById('eventCity')
+        ]
+
+        replaceTs(elementArray)
 
         const newEvent = {
             userId: parseInt(sessionStorage.getItem("activeUser")),
@@ -27,6 +36,14 @@ eventHub.addEventListener("submit", submitEvent => {
         submitEvent.preventDefault()
 
         const [prefix, id] = submitEvent.submitter.id.split("--")
+
+        const elementArray = [
+            document.getElementById('eventName'),
+            document.getElementById('eventAddress'),
+            document.getElementById('eventCity')
+        ]
+
+        replaceTs(elementArray)
 
         const updatedEvent = {
             userId: parseInt(sessionStorage.getItem("activeUser")),
@@ -56,24 +73,24 @@ export const EventForm = () => {
 
     contentTarget.innerHTML = `
         <section id="eventCreateForm">
-            <h3>Create Event</h3>
+            <h3 id="eventFormTitle">CreaTe EvenT</h3>
             <form class="newEventForm">
                 <fieldset>
-                    <label for="eventName">Name of event:</label><br>
+                    <label for="eventName">Name of evenT:</label><br>
                     <input type="text" name="eventName" id="eventName" class="eventInput" required>
                 </fieldset>
 
                 <fieldset>
-                    <label for="eventDate">Date of event:</label><br>
+                    <label for="eventDate">DaTe of evenT:</label><br>
                     <input type="date" name="eventDate" id="eventDate" class="eventInput" required>
                 </fieldset>
                 
                 <fieldset>
                     <label for="eventAddress">Address:</label><br>
                     <input type="text" name="eventAddress" id="eventAddress" class="eventInput" required><br>
-                    <label for="eventCity">City:</label><br>
+                    <label for="eventCity">CiTy:</label><br>
                     <input type="text" name="eventCity" id="eventCity" class="eventInput" required><br>
-                    <label for="eventState">State:</label><br>
+                    <label for="eventState">STaTe:</label><br>
                     <select name="eventStateDropdown" id="eventStateDropdown" class="eventInput" required>
                         <option value="" hidden>Please select a state...</option>
                         ${
@@ -87,7 +104,7 @@ export const EventForm = () => {
                     <label for="eventZip">Zip Code:</label><br>
                     <input type="text" name="eventZip" id="eventZip" class="eventInput" maxlength="5" pattern="[0-9]{5}" required>
                 </fieldset>
-                <button type="submit" id="saveEventBtn">Save Event</button>
+                <button type="submit" id="saveEventBtn">Save EvenT</button>
                 <button type="button" id="cancelBtn">Cancel</button>
             </form>
         </section>

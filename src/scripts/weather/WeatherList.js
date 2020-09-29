@@ -6,7 +6,7 @@ const eventHub = document.querySelector("body");
 
 //Listen for click on weather button and render or hide as appropriate
 eventHub.addEventListener("click", clickEvent => {
-    if (clickEvent.target.textContent === "Show Weather") {
+    if (clickEvent.target.textContent === "Show WeaTher") {
         const [prefix, id] = clickEvent.target.id.split("--")
         const eventForWeather = useEvents().find(event => event.id === parseInt(id))
         getWeather(eventForWeather)
@@ -19,18 +19,18 @@ eventHub.addEventListener("click", clickEvent => {
                     const contentTarget = document.querySelector(`.weatherContainer--${eventForWeather.id}`);
                     contentTarget.innerHTML = `
                     ${currentWeatherHTML(useWeather())}
-                    <p>Sorry, I can only predict weather for events in the next five days.</p>
+                    <p>Sorry, I can only predicT weaTher for evenTs in the nexT five days.</p>
                     `
                 }
             })
 
-        clickEvent.target.textContent = "Hide Weather";
+        clickEvent.target.textContent = "Hide WeaTher";
 
-    } else if (clickEvent.target.textContent === "Hide Weather") {
+    } else if (clickEvent.target.textContent === "Hide WeaTher") {
         const [prefix, id] = clickEvent.target.id.split("--")
         const contentTarget = document.querySelector(`.weatherContainer--${id}`);
         contentTarget.innerHTML = "";
-        clickEvent.target.textContent = "Show Weather";
+        clickEvent.target.textContent = "Show WeaTher";
     }
 })
 
@@ -39,7 +39,7 @@ export const WeatherForLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(renderCurrentWeather);
     } else {
-      document.querySelector("header").innerHTML += "Can't locate user position"
+      document.querySelector("header").innerHTML += "Can'T locaTe user posiTion"
     }
 }
 
