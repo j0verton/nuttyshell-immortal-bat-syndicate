@@ -35,3 +35,8 @@ top: 100px;
   background-color: DodgerBlue !important;
   color: #ffffff;
 }
+
+.friendsWith {
+  font-style: italic;
+  background-color: cornsilk;
+}

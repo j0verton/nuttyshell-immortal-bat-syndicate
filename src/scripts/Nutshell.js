@@ -14,10 +14,10 @@ export const Nutshell = () => {
     WeatherForLocation()
 
     //adds events to the DOM
-    EventList()
+    EventList();
 
     // adds articles to DOM and enables save and delete functionality
-    ArticleList()
+    ArticleList(); 
 
     NewMessageForm()
     MessageList()
@@ -25,6 +25,7 @@ export const Nutshell = () => {
     chatFeed()
     //adds tasks to dom
     Tasks()
-    //Adds friends to the DOM
-    friendsSetup();
+    
+    friendsSetup(); //Adds friends to the DOM
+    
 }
