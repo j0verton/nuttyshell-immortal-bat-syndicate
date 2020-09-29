@@ -18,25 +18,25 @@ const contentTarget = document.querySelector("aside");
 export const friendsSetup = () => {
   contentTarget.innerHTML += `<aside id="friendsListSection"></aside>`;
   getFriends()
-  .then(getUsers)
-  .then(() => {
-    const eventArray = useEvents();
-    const articleArray = useArticles();
-    const friendArray = useFriends();
-    friendArray.map(friend => {
-      eventArray.map(event => {
-        if (event.userId === friend.userId) {
-          document.querySelector(`#eventDetails--${event.id}`).classList += " friendsWith"
-        }
-      })
-      articleArray.map(article => {
-        if (article.userId === friend.userId) {
+    .then(getUsers)
+    .then(() => {
+      const eventArray = useEvents();
+      const articleArray = useArticles();
+      const friendArray = useFriends();
+      friendArray.map(friend => {
+        eventArray.map(event => {
+          if (event.userId === friend.userId) {
+            document.querySelector(`#eventDetails--${event.id}`).classList += " friendsWith"
+          }
+        })
+        articleArray.map(article => {
+          if (article.userId === friend.userId) {
             document.querySelector(`#article--${article.id}`).classList += " friendsWith"
-        }
+          }
+        })
       })
-    })
-    render();
-  });
+      render();
+    });
 };
 
 eventHub.addEventListener("click", clickEvent => {
@@ -50,7 +50,7 @@ eventHub.addEventListener("click", clickEvent => {
         activeUserId: parseInt(sessionStorage.getItem("activeUser")),
         userId: userObj.id,
       };
-      
+
       const friendObj2 = {
         userId: parseInt(sessionStorage.getItem("activeUser")),
         activeUserId: userObj.id,
@@ -59,10 +59,10 @@ eventHub.addEventListener("click", clickEvent => {
       let friendExist = useFriends().find(friend => friendObj.userId === friend.userId);
 
       if (friendExist) {
-          alert("You are already friends!");
+        alert("You are already friends!");
       } else {
-          AddFriend(friendObj);
-          AddFriend(friendObj2);
+        AddFriend(friendObj);
+        AddFriend(friendObj2);
       }
     }
   }
@@ -71,13 +71,13 @@ eventHub.addEventListener("click", clickEvent => {
 const render = () => {
   const contentTarget1 = document.querySelector("#friendsListSection");
   contentTarget1.innerHTML = `
- Friends
+ <strong>Friends</strong>
  <ul id="friendsList">
  ${useFriends()
-   .map((friend) => {
-     return `<li class="friendCard">${friend.user.username} <i class="fa fa-trash-o" id="dltFriendBtn--${friend.id}"></i></li>`;
-   })
-   .join("")}
+      .map((friend) => {
+        return `<li class="friendCard">${friend.user.username} <i class="fa fa-trash-o" id="dltFriendBtn--${friend.id}"></i></li>`;
+      })
+      .join("")}
  </ul>
  <button id="addFriendBtn">Add Friend</button>
  <div class="addFriendDiv"></div>
@@ -128,21 +128,21 @@ eventHub.addEventListener("click", (e) => {
         document.querySelector("#newFriend").value = "";
       } else {
         const friendObj = {
-            activeUserId: parseInt(sessionStorage.getItem("activeUser")),
-            userId: friendTarget.id,
-          };
-          const friendObj2 = {
-            userId: parseInt(sessionStorage.getItem("activeUser")),
-            activeUserId: friendTarget.id,
-          };
-            let friendExist = useFriends().find(
+          activeUserId: parseInt(sessionStorage.getItem("activeUser")),
+          userId: friendTarget.id,
+        };
+        const friendObj2 = {
+          userId: parseInt(sessionStorage.getItem("activeUser")),
+          activeUserId: friendTarget.id,
+        };
+        let friendExist = useFriends().find(
           (friend) => parseInt(friendObj.userId) === parseInt(friend.userId)
         );
         if (friendExist) {
           window.alert("You are already friends!");
         } else {
-            AddFriend(friendObj);
-            AddFriend(friendObj2);
+          AddFriend(friendObj);
+          AddFriend(friendObj2);
         }
       }
     } else {
