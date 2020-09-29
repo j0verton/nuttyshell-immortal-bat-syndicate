@@ -22,7 +22,7 @@ export const Nutshell = () => {
     NewMessageForm()
     MessageList()
 
-    chatFeed()
+    // chatFeed()
     //adds tasks to dom
     Tasks()
     //Adds friends to the DOM
