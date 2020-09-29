@@ -1,3 +1,7 @@
+#eventContainer h2 {
+    margin-top: 0;
+}
+
 .nextEvent {
     background-color: lightgrey;
     font-size: 1.25em;

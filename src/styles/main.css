@@ -9,15 +9,45 @@
 @import "./articles.css";
 
 /* other imports */
-@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
-@import url("articles.css");
+@import 'https://fonts.googleapis.com/css2?family=Lato&display=swap';
+@import "articles.css";
 @import "./friends.css";
 
 body {
-  margin: 0;
+  margin: 0 auto;
+}
+
+.container {
+  width: 100% !important;
+  padding: 0 !important;
 }
 
 .dashboard {
     display: flex;
     justify-content: space-between;
+    padding: 50px;
+    max-width: 1920px;
+    margin: 0 auto;
+}
+
+#main {
+  margin-right: 25px;
+}
+
+aside {
+  background-color: #eee;
+  padding: 25px;
+}
+
+footer {
+  color: #222222;
+  background-color: #9EE09E;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+}
+
+footer img {
+  height: 20px;
+  margin-right: 10px;
 }
