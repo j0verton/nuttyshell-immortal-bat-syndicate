@@ -94,6 +94,7 @@ eventHub.addEventListener("editMessage", e => {
 // this is a click event to save a message that is being edited
 eventHub.addEventListener("click", clickEvent =>{
     if (clickEvent.target.id.includes("editSaveMessageBtn")){
+        clickEvent.preventDefault()
         const [prefix, messageId] = clickEvent.target.id.split("--")  
         findMessageById(messageId)
             .then(messageObj => {
