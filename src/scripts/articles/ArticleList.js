@@ -87,10 +87,12 @@ eventHub.addEventListener("click", event => {
         const title = document.querySelector('#input--title')
         const synopsis = document.querySelector('#input--synopsis')
         const url = document.querySelector('#input--url')
+        const artId = document.querySelector('#entryId')
 
         title.value = article.title
         synopsis.value = article.synopsis
         url.value = article.url
+        artId.value = article.id
 
     } else if (event.target.id === "modalClose" || event.target.id === "saveArticle") {
         modal.style.display = "none"

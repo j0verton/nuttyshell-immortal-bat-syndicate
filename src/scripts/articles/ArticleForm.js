@@ -11,15 +11,16 @@ eventHub.addEventListener("click", event => {
         const title = document.getElementById("input--title")
         const synopsis = document.getElementById("input--synopsis")
         const url = document.getElementById("input--url")
+        const id = document.getElementById('entryId')
 
-        if (id === true) {
+        if (id.value) {
             const editedArticle = {
                 userId: parseInt(sessionStorage.getItem("activeUser")),
-                title: document.querySelector('#input--title').value,
+                title: title.value,
                 date: Date.now(),
-                synopsis: document.querySelector('#input--synopsis').value,
-                url: document.querySelector('#input--url').value,
-                id: parseInt(id)
+                synopsis: synopsis.value,
+                url: url.value,
+                id: parseInt(id.value)
             }
 
             editArticle(editedArticle)
@@ -54,6 +55,7 @@ export const ArticleForm = () => {
                     <span id="modalClose">&times;</span>
                 </div>
 
+                <input type="hidden" name="entryId" id="entryId">
                 <input type="text" id="input--title" placeholder="Title of the Article"></input>
 
                 <textarea id="input--synopsis" placeholder="Please include a synopsis..." rows="10" cols="50"></textarea>
