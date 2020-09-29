@@ -16,6 +16,7 @@ export const NewMessageForm = () => {
 
 // creates a custom event for a save message button click
 document.addEventListener("click", clickEvent => {
+    
     if(clickEvent.target.id.startsWith("saveMessageBtn") && document.getElementById("newMessage").value) {
         clickEvent.preventDefault()
         const [prefix, activeUserId] = clickEvent.target.id.split("--")
@@ -28,6 +29,14 @@ document.addEventListener("click", clickEvent => {
         eventHub.dispatchEvent(newEvent)
         document.getElementById("newMessage").value = ""
     }
+})
+
+eventHub.addEventListener("friendChosenForMessage", e => {
+    document.querySelector("#newMessageForm").innerHTML = `
+        <input id="newMessage" type="text" placeholder="Enter your message">
+        <button type="button" id="saveMessageBtn--${sessionStorage.getItem("activeUser")}">Send</button>
+    `
+    document.getElementById("newMessage").value = `@${e.detail.targetUser}: `
 })
 //
 // document.addEventListener("keyup", e => {
