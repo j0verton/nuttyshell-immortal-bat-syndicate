@@ -24,8 +24,8 @@ eventHub.addEventListener("messageStateChanged", e => {
 
 // a click event listener for a delete message button 
 document.addEventListener("click", clickEvent => {
-    clickEvent.preventDefault()
     if(clickEvent.target.classList.contains("deleteMessage")) {
+        clickEvent.preventDefault()
         const [prefix, messageId] = clickEvent.target.id.split("--")
         let newEvent = new CustomEvent("messageDeleted", {
             detail: {
@@ -35,3 +35,13 @@ document.addEventListener("click", clickEvent => {
         eventHub.dispatchEvent(newEvent)
     }
 })
+
+
+//this is a long polling function which makes continuous fetch calls to the server so that near real time chatting can occur
+export async function chatFeed() {
+    await getMessages();
+      MessageList()
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      await chatFeed();
+}
+  
