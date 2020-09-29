@@ -1,15 +1,14 @@
 // export articles in HTML format to render to DOM
 
 export const ArticleHTMLConverter = (artObj) => {
-    const currentUser = parseInt(sessionStorage.getItem("activeUser"))
-    const postUser = artObj.userId
 
+    // shows edit and delete buttons for user's posts
     if (parseInt(sessionStorage.getItem("activeUser")) === artObj.userId) {
         return `
         <article class="article--container" id="article--${artObj.id}">
             <h3 class="article--title">${artObj.title}</h3>
-            <p class="article--user">Posted by: ${artObj.user.username}</p>
-            <p class="article--timestamp">Date: ${new Date(artObj.date).toLocaleDateString('en-US')}</p>
+            <p class="article--user"><strong>Posted by:</strong> ${artObj.user.username}</p>
+            <p class="article--timestamp"><strong>Date:</strong> ${new Date(artObj.date).toLocaleDateString('en-US')}</p>
 
             <p class="article--synopsis">${artObj.synopsis}</p>
 
@@ -25,12 +24,14 @@ export const ArticleHTMLConverter = (artObj) => {
             </div>
         </article>
     `
+
+        // removes edit and delete buttons for other user's posts
     } else {
         return `
         <article class="article--container" id="article--${artObj.id}">
             <h3 class="article--title">${artObj.title}</h3>
-            <p class="article--user">Posted by: ${artObj.user.username}</p>
-            <p class="article--timestamp">Date: ${new Date(artObj.date).toLocaleDateString('en-US')}</p>
+            <p class="article--user"><strong>Posted by:</strong> ${artObj.user.username}</p>
+            <p class="article--timestamp"><strong>Date:</strong> ${new Date(artObj.date).toLocaleDateString('en-US')}</p>
 
             <p class="article--synopsis">${artObj.synopsis}</p>
 
@@ -43,15 +44,3 @@ export const ArticleHTMLConverter = (artObj) => {
     `
     }
 }
-
-/*
- .then(() => {
-            const currentUser = parseInt(sessionStorage.getItem("activeUser"))
-            const postUser = artObj.userId
-
-            if (parseInt(sessionStorage.getItem("activeUser")) === artObj.userId) {
-                const editBtn = document.querySelector('.editBtn')
-                editBtn.display = 'none'
-            }
-        })
-        */

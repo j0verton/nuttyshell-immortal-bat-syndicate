@@ -1,6 +1,7 @@
 // form presented to user to add news article
 
 import { saveArticle, editArticle } from './ArticleProvider.js'
+import { replaceTs } from '../replaceTs.js'
 
 const eventHub = document.querySelector("body")
 
@@ -14,6 +15,15 @@ eventHub.addEventListener("click", event => {
         const id = document.getElementById('entryId')
 
         if (id.value) {
+
+            const artArr = [
+                document.getElementById('input--title'),
+                document.getElementById('input--synopsis'),
+                document.getElementById('input--url')
+            ]
+
+            replaceTs(artArr)
+
             const editedArticle = {
                 userId: parseInt(sessionStorage.getItem("activeUser")),
                 title: title.value,
@@ -26,6 +36,15 @@ eventHub.addEventListener("click", event => {
             editArticle(editedArticle)
 
         } else if (title.value !== "" && synopsis.value !== "" && url.value !== "") {
+
+            const artArr = [
+                document.getElementById('input--title'),
+                document.getElementById('input--synopsis'),
+                document.getElementById('input--url')
+            ]
+
+            replaceTs(artArr)
+
             const newArticle = {
                 userId: parseInt(sessionStorage.getItem("activeUser")),
                 title: title.value,
