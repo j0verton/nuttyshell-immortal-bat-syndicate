@@ -2,6 +2,7 @@ import { findUserById } from "./MessageProvider.js"
 
 //a function to  create an html message from a message object
 export async function Message (messageObj) {
+    let message = {}
     let timeStamp= ''
     let messageDateArray = messageObj.date.split(" ")
     let messageDate = messageDateArray.slice(1,4).join(" ")
@@ -13,8 +14,13 @@ export async function Message (messageObj) {
     } else {
         timeStamp = messageDateArray.slice(1,5).join(" ")
     }
+    //code for private message
+    if (messageObj.userId){
+        console.log(messageObj)
+    }
+
     //this code determines whether or not the message was sen by the currentUser and setts the class for css
-    if (messageObj.sendingUserId === parseInt(sessionStorage.getItem("activeUser"))){
+    if (messageObj.sendingUserId === parseInt(sessionStorage.getItem("activeUser")) && !messageObj.userId){
         return ` 
         <div class="currentUserMessageContainer">  
             <li class="currentUser message"><strong>${messageObj.message}</strong><br>- <small>${timeStamp}</small>
