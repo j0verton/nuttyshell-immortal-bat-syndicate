@@ -1,0 +1,43 @@
+#headerContainer {
+    background-color: #222222;
+}
+
+header {
+    display: flex !important;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 50px;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+#logoContainer img {
+    height: 50px;
+}
+
+header .weatherCard {
+    color: #222222;
+    background-color: #9EE09E;
+    padding: 10px;
+    border-radius: 50px;
+}
+
+header .weatherCard p {
+    border-bottom: 1px solid #222222;
+    margin: 0 0 5px 0;
+    text-align: center;
+}
+
+header .weatherCard ul {
+    display: flex;
+    flex-flow: row nowrap;
+    list-style-type: none;
+    font-size: smaller;
+    padding: 0;
+    margin: 0;
+}
+
+header .weatherCard ul li {
+    padding: 0 5px;
+}

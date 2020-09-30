@@ -1,9 +1,16 @@
 #messageContainer {
     /* display: flex; */
     /* justify-content: flex-end */
-    border: solid 2px black;
-    background-color: lightgrey;
+    border: solid 1px darkgray;
+    background-color: white;
+    overflow: hidden;
 }
+
+#messages {
+    overflow-y: scroll;
+    max-height: 300px;
+}
+
 ul {
     list-style: none;
     margin-top: 30px;
@@ -15,8 +22,9 @@ ul {
     justify-content: flex-end;
     
 }
+
 .message {
-    background-color: mediumorchid;
+    background-color: gainsboro;
     border-radius: 20px;
     padding: 8px 15px;
     margin-top: 5px;
@@ -26,17 +34,30 @@ ul {
     align-items: flex-start;
 }
 .currentUser {
-    background-color: aquamarine;
+    background-color: #9EE09E;
     /* text-align: right; */
     align-items: flex-end;
     
 }
  #newMessageForm {
-     border: solid 2px black;
+     background-color: #ccc;
      display: flex;
     justify-content: flex-end;
     padding: 5px;
-    
+}
+
+#newMessage {
+    margin-right: 5px;
+}
+
+#newMessageForm button {
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, .25);
+    border: none;
+}
+
+#newMessageForm button:hover {
+    background-color: rgba(0, 0, 0, .4);
 }
 
 .deleteMessage {

@@ -18,15 +18,17 @@ eventHub.addEventListener("taskStateChanged", (e) => {
 ///Tasks Setup initializes the placement areas for the tasks.
 export const TasksSetup = () => {
   contentTarget.innerHTML += `
-  <h3>Tasks</h3>
-  <div class="tasksForm"></div>
-  <div class="tasksContainer"></div><p></p>
+  <div class="taskArea">
+    <h3>Tasks</h3>
+    <div class="tasksForm"></div>
+    <div class="tasksContainer"></div><p></p>
+  </div>
   `;
   const contentTarget2 = document.querySelector(".tasksContainer");
   contentTarget2.innerHTML = "";
 };
 
-export const TasksHTML = () => {};
+export const TasksHTML = () => { };
 
 //This gets the tasks list, then generates the information on the DOM
 export const Tasks = () => {

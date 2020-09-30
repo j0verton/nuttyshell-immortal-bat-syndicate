@@ -1,11 +1,8 @@
-/* imports */
-@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
-
-/* news container */
 #newsContainer {
     font-family: 'Lato', sans-serif;
     display: flex;
     flex-flow: column nowrap;
+    margin-top: 50px;
 }
 
 #newsHeader {
@@ -21,12 +18,12 @@
     margin: 0;
 }
 
-/* show form button */
 #showFormBtn {
     font-family: 'Lato', sans-serif;
     font-weight: bold;
     text-transform: uppercase;
-    background-color: lightgreen;
+    color: #222222;
+    background-color: #9EE09E;
     border: none;
     padding: 10px;
     margin-bottom: 10px;
@@ -34,7 +31,7 @@
 }
 
 #showFormBtn:hover {
-    background-color: green;
+    background-color: #6e9c6e;
     cursor: pointer;
 }
 
@@ -43,7 +40,7 @@
     flex-flow: column nowrap;
     background-color: lightgray;
     padding: 25px;
-    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .article--container h3 {
@@ -58,18 +55,20 @@
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
+    text-transform: uppercase;
+    margin-top: 10px;
 }
 
 .article--actions a {
     color: black;
     font-weight: bold;
-    background-color: darkgray;
+    background-color: rgba(0, 0, 0, .25);
     padding: 10px;
 }
 
 .article--actions a:hover {
     color: black;
-    background-color: gray;
+    background-color: rgba(0, 0, 0, .4);
     text-decoration: none;
 }
 
@@ -82,14 +81,13 @@
     font-family: 'Lato', sans-serif;
     font-weight: bold;
     text-transform: uppercase;
-    background-color: darkgray;
+    background-color: rgba(0, 0, 0, .25);
     border: none;
-    padding: 0 10px;
+    padding: 10px;
 }
 
 .editBtn:hover {
-    background-color: gray;
-    cursor: pointer;
+    background-color: rgba(0, 0, 0, .4)
 }
 
 .trashBtn {

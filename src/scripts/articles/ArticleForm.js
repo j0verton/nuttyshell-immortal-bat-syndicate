@@ -70,16 +70,16 @@ export const ArticleForm = () => {
         <section id="formModal" class="modal">
             <form id="input--form" class="modal-content">
                 <div id="input--header">
-                    <h3 id="modalGreeting">Share an Article</h3>
+                    <h3 id="modalGreeting">Share an ArTicle</h3>
                     <span id="modalClose">&times;</span>
                 </div>
 
                 <input type="hidden" name="entryId" id="entryId">
-                <input type="text" id="input--title" placeholder="Title of the Article"></input>
+                <input type="text" id="input--title" placeholder="TiTle of the ArTicle"></input>
 
                 <textarea id="input--synopsis" placeholder="Please include a synopsis..." rows="10" cols="50"></textarea>
 
-                <input type="text" id="input--url" placeholder="Copy/Paste URL of Article Here"></input>
+                <input type="text" id="input--url" placeholder="Copy/PasTe URL of ArTicle Here"></input>
 
                 <button id="saveArticle" type="reset">Share</button>
             </form>

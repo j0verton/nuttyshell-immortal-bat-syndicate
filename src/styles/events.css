@@ -1,3 +1,34 @@
+#eventContainer {
+    font-family: 'Lato', sans-serif;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+#eventHeader {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center; 
+    border-bottom: 1px solid lightgray;
+    margin-bottom: 10px;
+}
+
+#createEventBtn {
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #222222;
+    background-color: #9EE09E;
+    border: none;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 150px;
+}
+
+#eventHeader h2 {
+    margin: 0;
+}
+
 .nextEvent {
     background-color: lightgrey;
     font-size: 1.25em;
@@ -12,4 +43,53 @@
 .nextEvent button {
     font-size: .8em;
     font-weight: normal;
+}
+
+.eventCard {
+    display: flex;
+    flex-flow: column nowrap;
+    background-color: lightgray;
+    padding: 25px;
+    margin-top: 10px;
+}
+
+.eventCard h4 {
+    font-size: 1.75em;
+}
+
+.eventCard button .weatherBtn {
+    width: 250px;
+}
+
+.eventCard .weatherCard {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.eventCard .weatherCard p {
+    margin: 0 15px;
+}
+
+.eventCard .weatherCard ul {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    list-style-type: none;
+    font-size: smaller;
+    padding: 0;
+    margin: 0;
+}
+
+.eventCard .weatherCard li {
+    margin-left: 10px;
+}
+
+.eventActions {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+}
+
+.eventActions button {
+    margin-left: 10px;
 }
