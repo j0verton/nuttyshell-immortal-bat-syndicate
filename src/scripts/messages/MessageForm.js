@@ -85,8 +85,6 @@ document.addEventListener("keydown", e => {
                 eventHub.dispatchEvent(newEvent)
                 document.getElementById("newMessage").value = ""
             }
-            eventHub.dispatchEvent(newEvent)
-            document.getElementById("newMessage").value = ""
         }
     }
 })
