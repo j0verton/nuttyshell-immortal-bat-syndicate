@@ -92,7 +92,7 @@ export const EventForm = () => {
                     <input type="text" name="eventCity" id="eventCity" class="eventInput" required><br>
                     <label for="eventState">STaTe:</label><br>
                     <select name="eventStateDropdown" id="eventStateDropdown" class="eventInput" required>
-                        <option value="" hidden>Please select a state...</option>
+                        <option value="" hidden>Please selecT a sTaTe...</option>
                         ${
                             stateAbbreviations.map(state => {
                                 return `
