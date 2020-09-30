@@ -2,6 +2,8 @@ import { findUserById } from "./MessageProvider.js"
 
 //a function to  create an html message from a message object
 export async function Message (messageObj) {
+    let message = {}
+    let currentUser = parseInt(sessionStorage.getItem("activeUser"))
     let timeStamp= ''
     let messageDateArray = messageObj.date.split(" ")
     let messageDate = messageDateArray.slice(1,4).join(" ")
@@ -13,8 +15,9 @@ export async function Message (messageObj) {
     } else {
         timeStamp = messageDateArray.slice(1,5).join(" ")
     }
-    //this code determines whether or not the message was sen by the currentUser and setts the class for css
-    if (messageObj.sendingUserId === parseInt(sessionStorage.getItem("activeUser"))){
+    //this code determines whether or not the message was sent by the currentUser, whether it is private and sets the classes for css
+    //current user sent public messages
+    if (messageObj.sendingUserId === currentUser && !messageObj.userId){
         return ` 
         <div class="currentUserMessageContainer">  
             <li class="currentUser message"><strong>${messageObj.message}</strong><br>- <small>${timeStamp}</small>
@@ -23,12 +26,35 @@ export async function Message (messageObj) {
             </li>
         </div>
             `
-
-    } else {
+    //current user sent private messages
+    } else if (messageObj.sendingUserId === parseInt(sessionStorage.getItem("activeUser")) && messageObj.userId && messageObj.userId !== currentUser){
+        return ` 
+        <div class="currentUserMessageContainer">  
+            <li class="currentUser private message"><strong>${messageObj.message}</strong><br>- <small>${timeStamp}</small>
+                <button class="deleteMessage" id="deleteMessage--${messageObj.id}">🗑️</button>
+                <button class="editMessage" id="editMessage--${messageObj.id}">✏️</button>
+            </li>
+        </div>
+            `
+    //other user sent public messages
+    } else if (messageObj.sendingUserId !== parseInt(sessionStorage.getItem("activeUser")) && !messageObj.userId){
         let user = await findUserById(messageObj.sendingUserId)
         return ` 
             <div class="friendMessageContainer">  
-                <li class="user--${messageObj.sendingUserId} message"><strong>${messageObj.message}</strong><br>- <a id="msgUser--${messageObj.sendingUserId}" href="">${user[0].username}</a><small> ${timeStamp}</small>
+                <li class="user--${messageObj.sendingUserId} message" ><strong>${messageObj.message}</strong><br>- <a id="msgUser--${messageObj.sendingUserId}" href="">${user[0].username}</a><small> ${timeStamp}</small>
+                </li>
+            </div>
+                `
+    // other user private to not current user
+    } else if (messageObj.sendingUserId !== parseInt(sessionStorage.getItem("activeUser")) && messageObj.userId !== currentUser){
+        return ``                 
+    //other user sent private messages
+    } else if (messageObj.sendingUserId !== parseInt(sessionStorage.getItem("activeUser")) && messageObj.userId === currentUser){
+        let user = await findUserById(messageObj.sendingUserId)
+        let currentUser = await findUserById(parseInt(sessionStorage.getItem("activeUser")))
+        return ` 
+            <div class="friendMessageContainer">  
+                <li class="user--${messageObj.sendingUserId} private message" ><strong>${messageObj.message}</strong><br>- <a id="msgUser--${messageObj.sendingUserId}" href="">${user[0].username}</a><small> ${timeStamp}</small>
                 </li>
             </div>
                 `

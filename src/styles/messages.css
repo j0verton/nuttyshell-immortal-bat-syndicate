@@ -39,6 +39,11 @@ ul {
     align-items: flex-end;
     
 }
+
+.private{
+    background-color: #e09e9e;
+}
+
  #newMessageForm {
      background-color: #ccc;
      display: flex;

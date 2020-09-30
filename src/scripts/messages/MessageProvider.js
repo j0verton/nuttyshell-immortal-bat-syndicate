@@ -1,3 +1,6 @@
+import { getFriends } from "../friends/FriendsData.js"
+import { replaceTs } from "../replaceTs.js"
+
 const eventHub = document.querySelector("body")
 
 let messages = []
@@ -30,6 +33,11 @@ export const getMessages = () => {
 //this function finds a user in the database by their Id
 export const findUserById = idNum => {
     return fetch(`http://localhost:8088/users?id=${idNum}`)
+        .then(response => response.json())
+}
+//this function finds a user in the database by their name
+export const findUserByName = username => {
+    return fetch(`http://localhost:8088/users?username=${username}`)
         .then(response => response.json())
 }
 //this function gets a specific message by id
@@ -65,14 +73,26 @@ const dispatchStateChangeEvent = () => {
 
 //listens for a saved message and turns it into an object then calls the saveMessage function
 eventHub.addEventListener("messageSaved", e => {
-    let messageDate =new Date()
-    let message = {
-        sendingUserId: e.detail.activeUserId,
-        message: e.detail.message,
-        date: messageDate.toString()
-    }
-    saveMessage(message)
-        .then(useMessages)
+    let targetUser
+        let messageDate =new Date()
+        let message = {
+            sendingUserId: e.detail.activeUserId,
+            message: e.detail.message,
+            date: messageDate.toString()
+        }
+        if (e.detail.user){
+            findUserByName(e.detail.user)
+            .then(user=> {
+                message.userId = user[0].id
+                return message
+            })
+            .then(saveMessage)
+            .then(useMessages)
+        } else {
+        saveMessage(message)
+            .then(useMessages)
+        }
+
 })
 
 // listens for a delete message and calls the delete function

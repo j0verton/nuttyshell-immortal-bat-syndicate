@@ -59,10 +59,10 @@ export async function chatFeed() {
     if(!document.querySelector("#editMessageForm")){
         await getMessages();
         MessageList()
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        await new Promise(resolve => setTimeout(resolve, 3000));
         await chatFeed();
     } else {
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        await new Promise(resolve => setTimeout(resolve, 3000));
         await chatFeed();
     }
 }
