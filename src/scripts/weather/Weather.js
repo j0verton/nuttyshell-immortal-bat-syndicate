@@ -4,7 +4,7 @@ export const WeatherHTML = (weather) => {
     const precipitationChance = Math.round(weather.pop * 100)
     return `
     <div class="weatherCard">
-        <p><strong>Weather for ${date}</strong></p>
+        <p><strong>WeaTher for ${date}</strong></p>
         <ul class="weatherListing">
             <li><strong>High:</strong> ${Math.round(weather.main.temp_max)} °F</li>
             <li><strong>Low:</strong> ${Math.round(weather.main.temp_min)} °F</li>
