@@ -21,8 +21,10 @@ eventHub.addEventListener("click", clickEvent => {
         eventArray.forEach(event => {
             if (event.userId === parseInt(sessionStorage.getItem("activeUser"))) {
                 document.querySelector(`#eventDetails--${event.id}`).innerHTML += `
-                <button type="button" id="editEventBtn--${event.id}">EdiT EvenT</button>
-                <button type="button" id="deleteEventBtn--${event.id}">DeleTe EvenT</button>
+                <div class="eventActions">
+                    <button type="button" id="editEventBtn--${event.id}" class="editBtn">EdiT</button>
+                    <button type="button" id="deleteEventBtn--${event.id}" class="trashBtn">🗑️</button>
+                </div>
                 `
             }
         })
@@ -79,8 +81,10 @@ export const EventList = () => {
             eventArray.forEach(event => {
                 if (event.userId === parseInt(sessionStorage.getItem("activeUser"))) {
                     document.querySelector(`#eventDetails--${event.id}`).innerHTML += `
-                    <button type="button" id="editEventBtn--${event.id}">EdiT EvenT</button>
-                    <button type="button" id="deleteEventBtn--${event.id}">DeleTe EvenT</button>
+                    <div class="eventActions">
+                        <button type="button" id="editEventBtn--${event.id}" class="editBtn">EdiT</button>
+                        <button type="button" id="deleteEventBtn--${event.id}" class="trashBtn">🗑️</button>
+                    </div>
                     `
                 }
             })
@@ -114,8 +118,11 @@ const render = eventArray => {
     const HTMLRep = eventArray.map(event => EventHTML(event)).join("");
 
     contentTarget.innerHTML = `
-        <h2>EvenTs</h2>
-        <button type="button" id="createEventBtn">CreaTe EvenT</button>
+        <div id="eventHeader">
+            <h2>EvenTs</h2>
+            <button type="button" id="createEventBtn">CreaTe EvenT</button>
+        </div>
+
         ${HTMLRep}
     `
 }

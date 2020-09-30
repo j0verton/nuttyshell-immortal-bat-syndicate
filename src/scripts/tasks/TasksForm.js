@@ -16,8 +16,8 @@ eventHub.addEventListener("click", (e) => {
     inputForm.style.display = "none";
   } else if (e.target.id === "saveTaskBtn") {
     if (document.getElementById("newTask").value) {
-    const elementArray = [document.getElementById("newTask")]
-        replaceTs(elementArray)
+      const elementArray = [document.getElementById("newTask")]
+      replaceTs(elementArray)
       const newTask = {
         userId: parseInt(sessionStorage.getItem("activeUser")),
         task: document.getElementById("newTask").value,
@@ -42,9 +42,10 @@ export const TaskForm = () => {
   contentTarget.innerHTML = `
   <button id="newTaskDisplay">New Task</button>
   <div id="inputForm" style="display:none">
-    <input id="newTask" type="text" placeholder="To Do">
+    <input id="newTask" type="text" placeholder="To Do"><br />
     <label for="taskDate"> CompleTe By: </label>
     <input type="date" id="taskDate">
-    <button id="saveTaskBtn">Save Task</button><button id="cancelTaskBtn">Cancel</button> </div>
+    <button id="saveTaskBtn">Save Task</button><button id="cancelTaskBtn">Cancel</button> 
+  </div>
     `;
 };
