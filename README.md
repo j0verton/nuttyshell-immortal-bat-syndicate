@@ -26,16 +26,14 @@ Nutshell is an application that enables a user to organize their daily tasks, ev
 Make sure you have Node.js and npm installed. After those are installed, make sure you use npm to install serve and json-server.
 1. ```git clone``` the repository URL
 2. ```cd``` into the directory it creates
-3. 
-4. Delete the ```.ignore``` file in the ```api``` directory
-5. ```touch src/scripts/Settings.js```
-6. Visit https://openweathermap.org/guide#how to create an account and get your API key
-7. In ```Settings.js``` write the following code:<br>
+3. ```touch src/scripts/Settings.js```
+4. Visit https://openweathermap.org/guide#how to create an account and get your API key
+5. In ```Settings.js``` write the following code:<br>
 ```export default { weatherKey: "your API key here" }```
-8. In the API directory change ```sample_database.json``` to ```database.json``` 
-9. Serve JSON file utilizing ```json-server -w database.json -p 8088```
-10. In a new tab in your terminal, ```cd``` into ```src```, and ```serve```
-11. Go to the localhost address in your browser that serve is serving on and register an account
+6. In the API directory change ```sample_database.json``` to ```database.json``` 
+7. Serve JSON file utilizing ```json-server -w database.json -p 8088```
+8. In a new tab in your terminal, ```cd``` into ```src```, and ```serve```
+9. Go to the localhost address in your browser that serve is serving on and register an account
 
 ## Contributors
 
